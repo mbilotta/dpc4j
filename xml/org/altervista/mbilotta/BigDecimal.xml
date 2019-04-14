@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2015 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:type="numberFactory">
+	<class>org.altervista.mbilotta.julia.math.impl.rjm.RJMNumberFactory</class>
+	<parameter id="precision" xsi:type="int">
+		<min>1</min>
+		<hint>16</hint>
+	</parameter>
+	<documentation xml:lang="it">
+		<name>java.math Number Factory</name>
+		<description>
+		Number Factory per [code]java.math.BigDecimal[/code]. Fa uso delle funzioni matematiche implementate da Richard J. Mathar.
+		Vedi il suo articolo $quot;[a href="http://arxiv.org/abs/0908.3030v2"]A Java Math.BigDecimal Implementation of Core Mathematical Functions[/a]$quot; per ulteriori dettagli.
+		</description>
+		<parameter id="precision">
+			<name>Precisione</name>
+			<description>Numero di cifre da utilizzare nei calcoli.</description>
+		</parameter>
+	</documentation>
+	<documentation xml:lang="en">
+		<name>java.math Number Factory</name>
+		<description>
+		Number Factory for [code]java.math.BigDecimal[/code] with Richard J. Mathar's core mathematical functions.
+		See his paper $quot;[a href="http://arxiv.org/abs/0908.3030v2"]A Java Math.BigDecimal Implementation of Core Mathematical Functions[/a]$quot; for further details.
+		</description>
+		<parameter id="precision">
+			<name>Precision</name>
+			<description>Number of digits to be used in calculations.</description>
+		</parameter>
+	</documentation>
+</plugin>

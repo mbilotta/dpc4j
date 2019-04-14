@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2015 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:type="formula">
+	<class>org.altervista.mbilotta.julia.impl.formulas.MultibrotFormula</class>
+	<mandelbrotSetDefaults>
+		<re0>-2</re0>
+		<im0>2</im0>
+		<re1>2</re1>
+		<im1>-2</im1>
+	</mandelbrotSetDefaults>
+	<juliaSetDefaults>
+		<re0>-2</re0>
+		<im0>2</im0>
+		<re1>2</re1>
+		<im1>-2</im1>
+		<reC>0</reC>
+		<imC>0</imC>
+	</juliaSetDefaults>
+	<parameter id="n" xsi:type="int">
+		<min>2</min>
+		<hint groups="quartic">4</hint>
+		<hint groups="cubic default">3</hint>
+		<hint groups="quadratic">2</hint>
+	</parameter>
+	<parameter id="bailout" xsi:type="real">
+		<minExclusive>0</minExclusive>
+		<hint groups="quartic cubic quadratic">20</hint>
+	</parameter>
+	<documentation xml:lang="en">
+		<name>Multibrot formula</name>
+		<description>
+		[var]z[/var] ← [var]z[sup]n[/sup][/var] + [var]c[/var] where [var]n[/var] is a positive integer.
+		</description>
+		<parameter id="bailout">
+			<name>Bailout</name>
+			<description>Bailout radius.</description>
+		</parameter>
+	</documentation>
+	<documentation xml:lang="it">
+		<name>Formula multibrot</name>
+		<description>
+		[var]z[/var] ← [var]z[sup]n[/sup][/var] + [var]c[/var] con [var]n[/var] intero positivo.
+		</description>
+		<parameter id="bailout">
+			<name>Bailout</name>
+			<description>Raggio di un cerchio centrato nell'origine.</description>
+		</parameter>
+	</documentation>
+</plugin>

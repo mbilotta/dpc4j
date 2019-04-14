@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2015 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:type="formula">
+	<class>org.altervista.mbilotta.julia.impl.carlson.CarlsonFormula</class>
+	<mandelbrotSetDefaults>
+		<re0>-4</re0>
+		<im0>10</im0>
+		<re1>16</re1>
+		<im1>-10</im1>
+	</mandelbrotSetDefaults>
+	<juliaSetDefaults>
+		<re0>-5</re0>
+		<im0>5</im0>
+		<re1>5</re1>
+		<im1>-5</im1>
+		<reC>0</reC>
+		<imC>0</imC>
+	</juliaSetDefaults>
+	<parameter id="bailout" xsi:type="real">
+		<minExclusive>0</minExclusive>
+		<hint>1.0e-12</hint>
+	</parameter>
+	<documentation xml:lang="it">
+		<name>Formula di Carlson</name>
+		<description>
+		Metodo di Newton applicato alla funzione f(z) = z[sup]4[/sup] + (c - 1) $sdot; z[sup]2[/sup] - c.
+		Questa formula è utilizzata da Paul W. Carlson nel suo articolo
+		$quot;[a href="http://dx.doi.org/10.1016/S0097-8493(99)00123-5"]Two artistic orbit trap rendering methods for Newton M-set fractals[/a]$quot;.
+		</description>
+		<parameter id="bailout">
+			<name>Bailout</name>
+			<description>
+			La condizione si verifica se |Err| $lt; bailout, dove Err = f(z) / f'(z).
+			</description>
+		</parameter>
+	</documentation>
+	<documentation xml:lang="en">
+		<name>Carlson Formula</name>
+		<description>
+		Newton's method applied to the function f(z) = z[sup]4[/sup] + (c - 1) $sdot; z[sup]2[/sup] - c.
+		This formula is used by Paul W. Carlson in his paper
+		$quot;[a href="http://dx.doi.org/10.1016/S0097-8493(99)00123-5"]Two artistic orbit trap rendering methods for Newton M-set fractals[/a]$quot;.
+		</description>
+		<parameter id="bailout">
+			<name>Bailout</name>
+			<description>
+			Condition holds if |Err| $lt; bailout, where Err = f(z) / f'(z).
+			</description>
+		</parameter>
+	</documentation>
+</plugin>

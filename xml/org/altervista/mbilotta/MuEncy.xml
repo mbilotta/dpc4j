@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2015 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:type="representation">
+	<class>org.altervista.mbilotta.julia.impl.munafo.MuEncyRepresentation</class>
+	<parameter id="maxIterations" xsi:type="int">
+		<min>1</min>
+	</parameter>
+	<parameter id="bailout" xsi:type="real">
+		<minExclusive>0</minExclusive>
+	</parameter>
+	<parameter id="distanceEstimateComputed" xsi:type="boolean">
+	</parameter>
+	<parameter id="continuousDwellComputed" xsi:type="boolean">
+	</parameter>
+	<parameter id="binaryDecompositionComputed" xsi:type="boolean">
+	</parameter>
+	<parameter id="dwellScaleLimit" xsi:type="int">
+		<min>1</min>
+	</parameter>
+	<parameter id="angleWeight" xsi:type="double">
+		<minInclusive>0</minInclusive>
+	</parameter>
+	<parameter id="finalradWeight" xsi:type="double">
+		<minInclusive>0</minInclusive>
+	</parameter>
+	<parameter id="finalangWeight" xsi:type="double">
+		<minInclusive>0</minInclusive>
+		<maxExclusive>1</maxExclusive>
+	</parameter>
+	<parameter id="numOfSteps" xsi:type="int">
+		<min>1</min>
+		<max>9</max>
+	</parameter>
+	<parameter id="optimizationDomain" xsi:type="enum">
+	</parameter>
+	<documentation xml:lang="en">
+		<name>Mu-Ency Representation</name>
+		<description>
+		This representation is based on the [a href="http://mrob.com/pub/muency/color.html"]algorithm[/a]
+		used in the [a href="http://mrob.com/pub/muency.html"]Mu-Ency[/a] illustrations by [a href="http://mrob.com/"]Robert Munafo[/a].
+		</description>
+		<parameter id="maxIterations">
+			<name>Max iterations</name>
+			<description></description>
+		</parameter>
+		<parameter id="bailout">
+			<name>Bailout</name>
+			<description></description>
+		</parameter>
+		<parameter id="distanceEstimateComputed">
+			<name>Compute distance estimate</name>
+			<description></description>
+		</parameter>
+		<parameter id="continuousDwellComputed">
+			<name>Compute continuous dwell</name>
+			<description></description>
+		</parameter>
+		<parameter id="binaryDecompositionComputed">
+			<name>Compute binary decomposition</name>
+			<description></description>
+		</parameter>
+		<parameter id="dwellScaleLimit">
+			<name>Dwell scale limit</name>
+			<description></description>
+		</parameter>
+		<parameter id="angleWeight">
+			<name>Angle weight</name>
+			<description></description>
+		</parameter>
+		<parameter id="finalradWeight">
+			<name>Finalrad weight</name>
+			<description></description>
+		</parameter>
+		<parameter id="finalangWeight">
+			<name>Finalang weight</name>
+			<description></description>
+		</parameter>
+		<parameter id="numOfSteps">
+			<name>Number of steps</name>
+			<description></description>
+		</parameter>
+		<parameter id="optimizationDomain">
+			<name>Optimization domain</name>
+			<description></description>
+		</parameter>
+	</documentation>
+</plugin>

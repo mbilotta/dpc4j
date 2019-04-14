@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2015 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:type="representation">
+	<class>org.altervista.mbilotta.julia.impl.escapetime.EscapeTime</class>
+	<parameter id="maxIterations" xsi:type="int">
+		<min>1</min>
+		<hint>500</hint>
+	</parameter>
+ 	<parameter id="gradient" xsi:type="gradient">
+		<hint>
+			<color location="0.0">66 30 15</color>
+			<color location="0.0625">25 7 26</color>
+			<color location="0.125">9 1 47</color>
+			<color location="0.1875">4 4 73</color>
+			<color location="0.25">0 7 100</color>
+			<color location="0.3125">12 44 138</color>
+			<color location="0.375">24 82 177</color>
+			<color location="0.4375">57 125 209</color>
+			<color location="0.5">134 181 229</color>
+			<color location="0.5625">211 236 248</color>
+			<color location="0.625">241 233 191</color>
+			<color location="0.6875">248 201 95</color>
+			<color location="0.75">255 170 0</color>
+			<color location="0.8125">204 128 0</color>
+			<color location="0.875">153 87 0</color>
+			<color location="0.9375">106 52 3</color>
+			<color location="1.0">66 30 15</color>
+		</hint>
+		<hint>
+			<color location="0.0">255 0 0</color>
+			<color location="0.07">255 255 0</color>
+			<color location="0.49">0 255 0</color>
+			<color location="0.57">0 0 255</color>
+			<color location="1.0">255 0 0</color>
+		</hint>
+		<hint>
+			<color location="0.0">51 10 112</color>
+			<color location="0.37">0 255 0</color>
+			<color location="0.46">255 255 255</color>
+			<color location="0.88">51 153 255</color>
+			<color location="1.0">51 10 112</color>
+		</hint>
+		<hint>
+			<color location="0.0">0 95 255</color>
+			<color location="0.28">255 255 255</color>
+			<color location="0.57">51 0 102</color>
+			<color location="0.65">0 0 255</color>
+			<color location="1.0">0 95 255</color>
+		</hint>
+		<hint>
+			<color location="0.0">95 47 0</color>
+			<color location="0.21">153 102 51</color>
+			<color location="0.34">255 255 204</color>
+			<color location="0.68">0 0 0</color>
+			<color location="1.0">95 47 0</color>
+		</hint>
+		<hint>
+			<color location="0.0">208 251 102</color>
+			<color location="0.31">0 0 102</color>
+			<color location="0.41">255 51 102</color>
+			<color location="0.75">255 204 102</color>
+			<color location="1.0">208 251 102</color>
+		</hint>
+		<hint>
+			<color location="0.0">112 0 191</color>
+			<color location="0.06">0 0 0</color>
+			<color location="0.45">0 102 255</color>
+			<color location="0.73">255 0 0</color>
+			<color location="1.0">112 0 191</color>
+		</hint>
+		<hint>
+			<color location="0.0">245 239 157</color>
+			<color location="0.08">0 255 0</color>
+			<color location="0.49">0 0 255</color>
+			<color location="0.61">102 0 204</color>
+			<color location="1.0">245 239 157</color>
+		</hint>
+		<hint>
+			<color location="0.0">10 150 10</color>
+			<color location="0.27">150 0 0</color>
+			<color location="0.48">0 0 150</color>
+			<color location="0.65">150 150 150</color>
+			<color location="1.0">10 150 10</color>
+		</hint>
+	</parameter>
+	<parameter id="paletteSize" xsi:type="int">
+		<min>1</min>
+		<hint>500</hint>
+	</parameter>
+	<parameter id="paletteOffset" xsi:type="int">
+		<min>0</min>
+		<hint>0</hint>
+	</parameter>
+	<parameter id="insideColor" xsi:type="color">
+		<hint>0 0 0</hint>
+	</parameter>
+	<parameter id="numOfSteps" xsi:type="int">
+		<min>1</min>
+		<max>9</max>
+		<hint>5</hint>
+	</parameter>
+	<parameter id="optimizationDomain" xsi:type="enum">
+		<hint>BORDERS_EXCLUDED</hint>
+	</parameter>
+	<documentation xml:lang="it">
+		<name>Tempo di Fuga</name>
+		<description>Numero di iterazioni necessarie affinché si verifichi la condizione di bailout. Un punto verifica tale condizione quando la sua orbita si porta al di fuori di una certa regione del piano complesso. La regione in questione varia a seconda della funzione che si itera; spesso si tratta di un cerchio o di un semipiano. I punti che, sotto iterazione, la oltrepassano avranno un colore dettato dal numero di iterazioni necessarie, posto che questo sia inferiore ad un certo massimo; i punti per i quali, invece, il numero massimo di iterazioni viene raggiunto prima, avranno un colore fisso.</description>
+		<parameter id="maxIterations">
+			<name>Numero massimo di iterazioni</name>
+			<description>Raggiunto questo numero di iterazioni senza che si verifichi bailout, al punto originario viene assegnato un colore fisso (vedi [a href="#insideColor"]Colore dei punti interni[/a]).</description>
+		</parameter>
+		<parameter id="gradient">
+			<name>Gradiente</name>
+			<description>Gradiente utilizzato per creare un array di colori che fa da tavolozza.</description>
+		</parameter>
+		<parameter id="paletteSize">
+			<name>Dimensione della tavolozza</name>
+			<description>Numero di colori della tavolozza (lunghezza dell'array di colori). Detto N tale numero, i colori sono numerati partendo da 0 fino a N - 1. Ad ogni punto dell'immagine per cui si verifica la condizione di bailout dopo K iterazioni viene assegnato il colore K modulo N.</description>
+		</parameter>
+		<parameter id="paletteOffset">
+			<name>Shifta la tavolozza di</name>
+			<description>Shifta a sinistra i colori nella tavolozza del numero di posizioni specificate. Lo shift è circolare, per cui i colori passano da un estremo all'altro della tavolozza al variare di questo parametro.</description>
+		</parameter>
+		<parameter id="insideColor">
+			<name>Colore dei punti interni</name>
+			<description>Colore assegnato ai punti per cui si raggiunge il numero massimo di iterazioni senza che si verifichi bailout.</description>
+		</parameter>
+		<parameter id="numOfSteps">
+			<name>Numero di passi</name>
+			<description></description>
+		</parameter>
+		<parameter id="optimizationDomain">
+			<name>Dominio di ottimizzazione</name>
+			<description></description>
+		</parameter>
+	</documentation>
+</plugin>

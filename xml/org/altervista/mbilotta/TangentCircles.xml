@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2015 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:type="representation">
+	<class>org.altervista.mbilotta.julia.impl.carlson.TangentCircles</class>
+	<parameter id="maxIterations" xsi:type="int">
+		<min>1</min>
+		<hint>500</hint>
+		<hint groups="fig3 fig5">3000</hint>
+	</parameter>
+	<parameter id="rc" xsi:type="real">
+		<minExclusive>0</minExclusive>
+		<hint groups="fig3">0.2</hint>
+		<hint groups="fig5">2</hint>
+	</parameter>
+	<parameter id="untrappedOutsidePoint" xsi:type="color">
+		<hint groups="fig3 fig5">0 0 0</hint>
+	</parameter>
+	<parameter id="untrappedInsidePoint" xsi:type="color">
+		<hint groups="fig3 fig5">255 255 255</hint>
+	</parameter>
+	<parameter id="paletteSize" xsi:type="int">
+		<min>1</min>
+		<max>268435455</max>
+		<hint groups="fig3 fig5">30</hint>
+	</parameter>
+	<parameter id="paletteOffset" xsi:type="int">
+		<min>0</min>
+		<hint groups="fig3 fig5">0</hint>
+	</parameter>
+	<parameter id="trappedPoint0" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">255 0 174</color>
+			<color location="1">96 0 32</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint1" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">255 32 32</color>
+			<color location="1">96 0 0</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint2" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">255 130 0</color>
+			<color location="1">162 16 0</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint3" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">255 255 0</color>
+			<color location="1">154 64 0</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint4" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">0 255 108</color>
+			<color location="1">0 48 16</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint5" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">0 255 255</color>
+			<color location="1">0 48 48</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint6" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">64 64 255</color>
+			<color location="1">0 0 96</color>
+		</hint>
+	</parameter>
+	<parameter id="trappedPoint7" xsi:type="gradient">
+		<hint groups="fig3 fig5">
+			<color location="0">174 96 255</color>
+			<color location="1">72 0 80</color>
+		</hint>
+	</parameter>
+	<documentation xml:lang="it">
+		<name>Cerchi tangenti</name>
+		<description>
+		Questa rappresentazione utilizza uno dei metodi "orbit trap" ideati da Paul W. Carlson. L'insieme di cattura
+		è costituito da 8 cerchi di raggio pari a [var]R[sub]c[/sub][/var] i quali, toccandosi, formano un anello centrato nell'origine.
+		Maggiori dettagli si trovano nel suo articolo:
+		[blockquote][a href="http://dx.doi.org/10.1016/S0097-8493(99)00123-5"]Two artistic orbit trap rendering methods for Newton M-set fractals[/a][/blockquote]
+		</description>
+		<parameter id="maxIterations">
+			<name>Iterazioni massime</name>
+			<description>
+			Raggiunto questo numero di iterazioni senza che si verifichi bailout o cattura, al punto originario viene assegnato un colore fisso.
+			(vedi [a href="#untrappedInsidePoint"]Colore interno (no cattura)[/a]).
+			</description>
+		</parameter>
+		<parameter id="rc">
+			<name>R[sub]c[/sub]</name>
+			<description>
+			Raggio di ciascuno degli 8 cerchi costituenti l'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="untrappedOutsidePoint">
+			<name>Colore esterno (no cattura)</name>
+			<description>
+			Colore di un punto per cui si verifica la condizione di bailout, senza che l'orbita venga catturata prima.
+			</description>
+		</parameter>
+		<parameter id="untrappedInsidePoint">
+			<name>Colore interno (no cattura)</name>
+			<description>
+			Colore di un punto per cui viene raggiunto il massimo numero di iterazioni, senza che si verifichi prima bailout o cattura.
+			</description>
+		</parameter>
+		<parameter id="paletteSize">
+			<name>Dimensione tavolozza</name>
+			<description>
+			Ci sono 8 tavolozze tutte della stessa dimensione pari al valore di questo parametro. Ciascuna è associata ad un cerchio
+			dell'insieme di cattura. Modificare questo parametro per aumentare o diminuire la risoluzione delle sfumature all'interno dei
+			cerchi che appaiono nell'immagine finale.
+			</description>
+		</parameter>
+		<parameter id="paletteOffset">
+			<name>Shift tavolozza</name>
+			<description>
+			Shifta a sinistra i colori in ciascuna tavolozza del numero di posizioni specificate. Lo shift è circolare,
+			per cui i colori passano da un estremo all'altro di una tavolozza al variare di questo parametro.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint0">
+			<name>Colori cerchio 0</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 0 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint1">
+			<name>Colori cerchio 1</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 1 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint2">
+			<name>Colori cerchio 2</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 2 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint3">
+			<name>Colori cerchio 3</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 3 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint4">
+			<name>Colori cerchio 4</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 4 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint5">
+			<name>Colori cerchio 5</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 5 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint6">
+			<name>Colori cerchio 6</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 6 dell'insieme di cattura.
+			</description>
+		</parameter>
+		<parameter id="trappedPoint7">
+			<name>Colori cerchio 7</name>
+			<description>
+			Gradiente utilizzato per colorare il cerchio 7 dell'insieme di cattura.
+			</description>
+		</parameter>
+	</documentation>
+</plugin>
