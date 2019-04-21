@@ -15,24 +15,44 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 
 * __Quadratic__ is the well-known Mandelbrot recurrence relation:&nbsp;&nbsp;![equation](http://latex.codecogs.com/svg.latex?z_{n%2B1}%20%3D%20z_n^2%20%2B%20c)
 * __Multibrot__ is a generalization of the previous formula where the exponent can be set to an arbitrary integer.
-* __Carlson__ arise from the Newton's method applied to a particular quartic equation. It's named after [Paul W. Carlson](http://departments.fmarion.edu/mathematics/museum/author.html) who used this formula to illustrate [two artistic orbit trap rendering methods](http://dx.doi.org/10.1016/S0097-8493(99)00123-5).
+* __Carlson__ arises from the Newton's method applied to a particular quartic equation. It's named after [Paul W. Carlson](http://departments.fmarion.edu/mathematics/museum/author.html) who used this formula to illustrate [two artistic orbit trap rendering methods](http://dx.doi.org/10.1016/S0097-8493(99)00123-5).
 
 ### Representations
 
-* __Escape Time__ TODO
-* __MuEncy__ TODO
-* __Tangent Circles__ and __Ring Segments__ TODO.
+* __Escape Time__ is probably the first known coloring method. It is also known as _Escape Iterations_ or _Dwell_.
+* __MuEncy__ is based on the [algorithm](http://mrob.com/pub/muency/color.html) used by [Robert Munafo](http://mrob.com/) in the [Mu-Ency](http://mrob.com/pub/muency.html) illustrations. 
+* __Tangent Circles__ and __Ring Segments__ are two [orbit trap](https://www.mi.sanu.ac.rs/vismath/javier/b7.htm) rendering methods described by Paul W. Carlson in the same paper linked above.
 
 ## Installation
 
-TODO
+The first time Julia runs, an error message will show:
+
+![Error shown the first time Julia runs](http://mbilotta.altervista.org/wp-content/uploads/2015/02/error-first-run.png)
+
+Keep this window open and follow these steps:
+
+1. Download the [latest release](https://github.com/mbilotta/dpc4j/releases/latest) of DPC4J (`dpc4j.jup`).
+2. Click _Install new plugins..._ in the error dialog.
+3. Locate file `dpc4j.jup`.
+4. Click _Install_.
+5. Restart Julia.
 
 ## Building DPC4J
 
-TODO
+You need JDK 1.8+ and Maven installed. You also need to install Julia as a Maven dependency:
+
+    git clone https://github.com/mbilotta/julia.git
+    cd julia
+    mvn clean install
+
+Then you can build DPC4J as any other Maven project:
+
+    git clone https://github.com/mbilotta/dpc4j.git
+    cd dpc4j
+    mvn clean package
 
 ## Licensing information
 
-DPC4J is provided under the terms of the GNU General Public License (GPL), ver. 3. Once you’ve installed the package, look at file ~/.juliafg/doc/org/altervista/mbilotta/COPYING for full license terms.
+DPC4J is provided under the terms of the GNU General Public License (GPL), ver. 3. Once you’ve installed the package, look at file `~/.juliafg/doc/org/altervista/mbilotta/COPYING` for full license terms.
 
 This program is distributed in the hope that will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILIY or FITNESS FOR A PARTICULAR PURPOSE. For more details, refer to the specific license.
