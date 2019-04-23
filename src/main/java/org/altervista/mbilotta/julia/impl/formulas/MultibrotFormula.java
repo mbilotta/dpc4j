@@ -22,31 +22,55 @@
 package org.altervista.mbilotta.julia.impl.formulas;
 
 import org.altervista.mbilotta.julia.Author;
+import org.altervista.mbilotta.julia.Decimal;
+import org.altervista.mbilotta.julia.NumberFactory;
+import org.altervista.mbilotta.julia.impl.AbstractFormula;
+import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.Real;
 
 
-@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@gmail.com")
-public class MultibrotFormula extends QuadraticFormula {
+@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
+public class MultibrotFormula extends AbstractFormula<MultibrotFormula> {
 
 	private int n;
+	private Real bailout;
+
+	private Real zero;
+	private Real bailout2;
 
 	public MultibrotFormula() {
-		n = 4;
+		this(4, new Decimal(20));
 	}
 
 	public MultibrotFormula(int n, Real bailout) {
-		super(bailout);
 		this.n = n;
+		this.bailout = bailout;
 	}
 
 	@Override
 	public void iterate() {
-		setZ(getZ().toThe(n).plus(getC()));
+		z = z.toThe(n).plus(c);
+	}
+
+	@Override
+	public boolean bailoutOccured() {
+		return z.absSquared().gt(bailout2);
+	}
+
+	@Override
+	public void initJuliaIteration(Complex z) {
+		setZ(z);
+	}
+
+	@Override
+	public void initMandelbrotIteration(Complex c) {
+		setZ(zero);
+		setC(c);
 	}
 
 	@Override
 	public MultibrotFormula newInstance() {
-		return new MultibrotFormula(n, getBailout());
+		return new MultibrotFormula(n, this.bailout);
 	}
 
 	public int getN() {
@@ -55,5 +79,19 @@ public class MultibrotFormula extends QuadraticFormula {
 
 	public void setN(int n) {
 		this.n = n;
+	}
+
+	public Real getBailout() {
+		return bailout;
+	}
+
+	public void setBailout(Real bailout) {
+		this.bailout = bailout;
+	}
+
+	@Override
+	public void cacheConstants(NumberFactory numberFactory) {
+		zero = numberFactory.zero();
+		bailout2 = bailout.square();
 	}
 }

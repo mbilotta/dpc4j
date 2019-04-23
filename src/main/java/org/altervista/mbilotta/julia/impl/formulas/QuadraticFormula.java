@@ -23,19 +23,27 @@ package org.altervista.mbilotta.julia.impl.formulas;
 
 import org.altervista.mbilotta.julia.Author;
 import org.altervista.mbilotta.julia.Decimal;
+import org.altervista.mbilotta.julia.Formula;
 import org.altervista.mbilotta.julia.NumberFactory;
-import org.altervista.mbilotta.julia.impl.AbstractFormula;
 import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.Real;
 
 
-@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@gmail.com")
-public class QuadraticFormula extends AbstractFormula<QuadraticFormula> {
+@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
+public class QuadraticFormula implements Formula {
 
 	private Real bailout;
 
-	private Complex zero;
+	private Real zero;
 	private Real bailout2;
+
+	private Real reZ;
+	private Real imZ;
+	private Real reZ2;
+	private Real imZ2;
+
+	private Real reC;
+	private Real imC;
 
 	public QuadraticFormula() {
 		bailout = new Decimal(20);
@@ -45,23 +53,51 @@ public class QuadraticFormula extends AbstractFormula<QuadraticFormula> {
 		this.bailout = bailout;
 	}
 
+	@Override
+	public Complex getZ() {
+		return reZ.plus(imZ.i());
+	}
+
+	@Override
+	public Complex getC() {
+		return reC.plus(imC.i());
+	}
+
+	@Override
+	public void setC(Complex c) {
+		reC = c.re();
+		imC = c.im();
+	}
+
+	@Override
 	public void iterate() {
-		z = z.square().plus(c);
+		Real reTemp = reZ2.minus(imZ2).plus(reC);
+		imZ = reZ.times(imZ).times(2).plus(imC);
+		reZ = reTemp;
+		imZ2 = imZ.square();
+		reZ2 = reZ.square();
 	}
 
+	@Override
 	public boolean bailoutOccured() {
-		return z.absSquared().gt(bailout2);
+		return reZ2.plus(imZ2).gt(bailout2);
 	}
 
+	@Override
 	public void initJuliaIteration(Complex z) {
-		setZ(z);
+		reZ = z.re();
+		imZ = z.im();
+		reZ2 = reZ.square();
+		imZ2 = imZ.square();
 	}
 
+	@Override
 	public void initMandelbrotIteration(Complex c) {
-		setZ(zero);
+		reZ = imZ = reZ2 = imZ2 = zero;
 		setC(c);
 	}
 
+	@Override
 	public QuadraticFormula newInstance() {
 		return new QuadraticFormula(bailout);
 	}
@@ -74,6 +110,7 @@ public class QuadraticFormula extends AbstractFormula<QuadraticFormula> {
 		this.bailout = bailout;
 	}
 
+	@Override
 	public void cacheConstants(NumberFactory numberFactory) {
 		zero = numberFactory.zero();
 		bailout2 = bailout.square();
