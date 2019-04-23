@@ -31,7 +31,7 @@ The first time Julia runs, an error message will show:
 
 Keep this window open and follow these steps:
 
-1. Download the [latest release](https://github.com/mbilotta/dpc4j/releases/latest) of DPC4J (`dpc4j.jup`).
+1. Download the [latest release](https://github.com/mbilotta/dpc4j/releases/latest) of DPC4J (the file named `dpc4j.jup`).
 2. Click _Install new plugins..._ in the error dialog.
 3. Locate file `dpc4j.jup`.
 4. Click _Install_.
