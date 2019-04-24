@@ -25,7 +25,7 @@ import java.math.BigInteger;
 import java.util.Vector;
 
 /** Euler numbers
-* @see <a href="http://oeis.org/A000364">A000364</a> in the OEIS.
+* <a href="http://oeis.org/A000364">A000364</a> in the OEIS.
 * @since 2008-10-30
 * @author Richard J. Mathar
 */
@@ -37,6 +37,7 @@ public class Euler
         static protected Vector<BigInteger> a = new Vector<BigInteger>() ;
 
         /** Ctor(). Fill the hash list initially with E_0 to E_3.
+        * @author Richard J. Mathar
         */
         public Euler()
         {
@@ -51,6 +52,7 @@ public class Euler
 
         /** Compute a coefficient in the internal table.
         * @param n the zero-based index of the coefficient. n=0 for the E_0 term. 
+        * @author Richard J. Mathar
         */
         protected void set(final int n)
         {
@@ -80,6 +82,7 @@ public class Euler
         /** The Euler number at the index provided.
         * @param n the index, non-negative.
         * @return the E_0=E_1=1 , E_2=5, E_3=61 etc
+        * @author Richard J. Mathar
         */
         public BigInteger at(int n)
         {

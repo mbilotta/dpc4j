@@ -54,6 +54,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Constructor given an integer.
         * constructor with an ordinary integer
         * @param number the standard representation of the integer
+        * @author Richard J. Mathar
         */
         public Ifactor(int number)
         {
@@ -96,6 +97,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Constructor given a BigInteger .
         * Constructor with an ordinary integer, calling a prime factor decomposition.
         * @param number the BigInteger representation of the integer
+        * @author Richard J. Mathar
         */
         public Ifactor(BigInteger number)
         {
@@ -137,6 +139,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * @param pows the vector with the sorted list of exponents.
         *  pows[0] is the exponent of 2, pows[1] the exponent of 3, pows[2] the exponent of 5 etc.
         *  Note that this list does not include the primes, but assumes a continuous prime-smooth basis.
+        * @author Richard J. Mathar
         */
         public Ifactor(Vector<Integer> pows)
         {
@@ -162,6 +165,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
 
         /** Copy constructor.
         * @param oth the value to be copied
+        * @author Richard J. Mathar
         */
         public Ifactor(Ifactor oth)
         {
@@ -171,20 +175,22 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
 
         /** Deep copy.
         * @since 2009-08-14
+        * @author Richard J. Mathar
         */
         public Ifactor clone()
         {
-//              Vector<Integer> p = (Vector<Integer>)primeexp.clone();
+                Vector<Integer> p = (Vector<Integer>)primeexp.clone();
                 Ifactor cl = new Ifactor(0) ;
                 cl.n = new BigInteger(""+n) ;
                 return cl ;
         } /* Ifactor.clone */
 
         /** Comparison of two numbers.
-        * The value of this method is in allowing the Vector<>.contains() calls that use the value,
+        * The value of this method is in allowing the Vector.contains() calls that use the value,
         * not the reference for comparison.
         * @param oth the number to compare this with.
         * @return true if both are the same numbers, false otherwise.
+        * @author Richard J. Mathar
         */
         public boolean equals(final Ifactor oth)
         {
@@ -194,6 +200,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Multiply with another positive integer.
         * @param oth the second factor.
         * @return the product of both numbers.
+        * @author Richard J. Mathar
         */
         public Ifactor multiply(final BigInteger oth)
         {
@@ -205,6 +212,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Multiply with another positive integer.
         * @param oth the second factor.
         * @return the product of both numbers.
+        * @author Richard J. Mathar
         */
         public Ifactor multiply(final int oth)
         {
@@ -216,6 +224,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Multiply with another positive integer.
         * @param oth the second factor.
         * @return the product of both numbers.
+        * @author Richard J. Mathar
         */
         public Ifactor multiply(final Ifactor oth)
         {
@@ -232,6 +241,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * @param oth the second parameter of lcm(this,oth)
         * @return the lowest common multiple of both numbers. Returns zero
         *   if any of both arguments is zero.
+        * @author Richard J. Mathar
         */
         public Ifactor lcm(final Ifactor oth)
         {
@@ -242,6 +252,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * @param oth the second parameter of gcd(this,oth)
         * @return the lowest common multiple of both numbers. Returns zero
         *   if any of both arguments is zero.
+        * @author Richard J. Mathar
         */
         public Ifactor gcd(final Ifactor oth)
         {
@@ -252,6 +263,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * @param oth the second factor.
         * @param type 0 to multiply, 1 for gcd, 2 for lcm
         * @return the product, gcd or lcm of both numbers.
+        * @author Richard J. Mathar
         */
         protected Ifactor multGcdLcm(final Ifactor oth, int type)
         {
@@ -382,6 +394,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Integer division through  another positive integer.
         * @param oth the denominator.
         * @return the division of this through the oth, discarding the remainder.
+        * @author Richard J. Mathar
         */
         public Ifactor divide(final Ifactor oth)
         {
@@ -394,6 +407,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Summation with another positive integer
         * @param oth the other term.
         * @return the sum of both numbers
+        * @author Richard J. Mathar
         */
         public Ifactor add(final BigInteger oth)
         {
@@ -408,6 +422,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Exponentiation with a positive integer.
         * @param exponent the non-negative exponent
         * @return n^exponent. If exponent=0, the result is 1.
+        * @author Richard J. Mathar
         */
         public Ifactor pow(final int exponent) throws ArithmeticException
         {
@@ -440,6 +455,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         *   The return value falls into the Ifactor class if r is positive, but if r is negative
         *   a Rational type is needed.
         * @since 2009-05-18
+        * @author Richard J. Mathar
         */
         public Rational root(final int r) throws ArithmeticException
         {
@@ -475,12 +491,13 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** The set of positive divisors.
         * @return the vector of divisors of the absolute value, sorted.
         * @since 2010-08-27
+        * @author Richard J. Mathar
         */
         public Vector<BigInteger> divisors()
         {
                 /* Recursive approach: the divisors of p1^e1*p2^e2*..*py^ey*pz^ez are
                 * the divisors that don't contain  the factor pz, and the
-                * the divisors that contain any power of pz between 1 and up to ez multiplied
+                * divisors that contain any power of pz between 1 and up to ez multiplied
                 * by 1 or by a product that contains the factors p1..py.
                 */
                 Vector<BigInteger> d=new Vector<BigInteger>() ;
@@ -518,6 +535,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
 
         /** Sum of the divisors of the number.
         * @return the sum of all divisors of the number, 1+....+n.
+        * @author Richard J. Mathar
         */
         public Ifactor sigma()
         {
@@ -525,7 +543,9 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         } /* Ifactor.sigma */
 
         /** Sum of the k-th powers of divisors of the number.
+        * @param k The exponent of the powers.
         * @return the sum of all divisors of the number, 1^k+....+n^k.
+        * @author Richard J. Mathar
         */
         public Ifactor sigma(int k)
         {
@@ -570,6 +590,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * @return the new integer obtained by removing the highest prime power.
         *   If this here represents 0 or 1, it is returned without change.
         * @since 2006-08-20
+        * @author Richard J. Mathar
         */
         public Ifactor dropPrime()
         {
@@ -598,10 +619,11 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
 
         /** Test whether this is a square of an integer (perfect square).
         * @return true if this is an integer squared (including 0), else false
+        * @author Richard J. Mathar
         */
         public boolean issquare()
         {
-//              boolean resul= true ;
+                boolean resul= true ;
                 /* check the exponents, located at the odd-indexed positions
                 */
                 for(int i=1 ; i < primeexp.size() ; i += 2)
@@ -614,6 +636,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
 
         /** The sum of the prime factor exponents, with multiplicity.
         * @return the sum over the primeexp numbers
+        * @author Richard J. Mathar
         */
         public int bigomega()
         {
@@ -626,6 +649,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** The sum of the prime factor exponents, without multiplicity.
         * @return the number of distinct prime factors.
         * @since 2008-10-16
+        * @author Richard J. Mathar
         */
         public int omega()
         {
@@ -635,6 +659,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** The square-free part.
         * @return the minimum m such that m times this number is a square.
         * @since 2008-10-16
+        * @author Richard J. Mathar
         */
         public BigInteger core()
         {
@@ -649,6 +674,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * 1 if n=1, else, if k is the number of distinct prime factors, return (-1)^k,
         * else, if k has repeated prime factors, return 0.
         * @return the moebius function.
+        * @author Richard J. Mathar
         */
         public int moebius()
         {
@@ -672,6 +698,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Maximum of two values.
         * @param oth the number to compare this with.
         * @return the larger of the two values.
+        * @author Richard J. Mathar
         */
         public Ifactor max(final Ifactor oth)
         {
@@ -684,6 +711,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Minimum of two values.
         * @param oth the number to compare this with.
         * @return the smaller of the two values.
+        * @author Richard J. Mathar
         */
         public Ifactor min(final Ifactor oth)
         {
@@ -696,6 +724,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Maximum of a list of values.
         * @param set list of numbers.
         * @return the largest in the list.
+        * @author Richard J. Mathar
         */
         public static Ifactor max(final Vector<Ifactor> set)
         {
@@ -708,6 +737,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Minimum of a list of values.
         * @param set list of numbers.
         * @return the smallest in the list.
+        * @author Richard J. Mathar
         */
         public static Ifactor min(final Vector<Ifactor> set)
         {
@@ -721,6 +751,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         * @param oth The value to be compared agains.
         * @return 1, 0 or -1 according to being larger, equal to or smaller than oth.
         * @since 2012-02-15
+        * @author Richard J. Mathar
         */
         public int compareTo( final Ifactor oth)
         {
@@ -729,6 +760,7 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
 
         /** Convert to printable format
         * @return a string of the form n:prime^pow*prime^pow*prime^pow...
+        * @author Richard J. Mathar
         */
         public String toString()
         {
@@ -755,8 +787,10 @@ public class Ifactor implements Cloneable, Comparable<Ifactor>
         /** Test program.
         * It takes a single argument n and prints the integer factorizaton.<br>
         * java -cp . org.nevec.rjm.Ifactor n<br>
+        * @param args It takes a single argument n and prints the integer factorizaton.<br>
+        * @author Richard J. Mathar
         */
-        public static void main(String[] args) throws Exception
+        public static void main(String[] args)
         {
                 BigInteger n = new BigInteger(args[0]) ;
                 System.out.println( new Ifactor(n)) ;

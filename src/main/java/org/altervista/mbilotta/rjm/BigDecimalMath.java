@@ -25,15 +25,16 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.security.ProviderException;
+import java.util.Vector;
 
 
 /** BigDecimal special functions.
 * <a href="http://arxiv.org/abs/0908.3030">A Java Math.BigDecimal Implementation of Core Mathematical Functions</a>
 * @since 2009-05-22
 * @author Richard J. Mathar
-* @see <a href="http://apfloat.org/">apfloat</a>
-* @see <a href="http://dfp.sourceforge.net/">dfp</a>
-* @see <a href="http://jscience.org/">JScience</a>
+* <a href="http://apfloat.org/">apfloat</a>
+* <a href="http://dfp.sourceforge.net/">dfp</a>
+* <a href="http://jscience.org/">JScience</a>
 */
 public class BigDecimalMath
 {
@@ -142,6 +143,7 @@ public class BigDecimalMath
         * @param mc The required precision of the result.
         * @return 3.14159...
         * @since 2009-05-29
+        * @author Richard J. Mathar
         */
         static public BigDecimal pi(final MathContext mc)
         {
@@ -162,6 +164,7 @@ public class BigDecimalMath
         * @param mc The required precision of the result.
         * @return 0.577...
         * @since 2009-08-13
+        * @author Richard J. Mathar
         */
         static public BigDecimal gamma(MathContext mc)
         {
@@ -207,9 +210,10 @@ public class BigDecimalMath
 
         /** The square root.
         * @param x the non-negative argument.
-        * @param mc
+        * @param mc The required mathematical precision.
         * @return the square root of the BigDecimal.
         * @since 2008-10-27
+        * @author Richard J. Mathar
         */
         static public BigDecimal sqrt(final BigDecimal x, final MathContext mc)
         {
@@ -247,6 +251,7 @@ public class BigDecimalMath
         * @param x the non-negative argument.
         * @return the square root of the BigDecimal rounded to the precision implied by x.
         * @since 2009-06-25
+        * @author Richard J. Mathar
         */
         static public BigDecimal sqrt(final BigDecimal x)
         {
@@ -261,6 +266,7 @@ public class BigDecimalMath
         * @return The cubic root of the BigDecimal rounded to the precision implied by x.
         * The sign of the result is the sign of the argument.
         * @since 2009-08-16
+        * @author Richard J. Mathar
         */
         static public BigDecimal cbrt(final BigDecimal x)
         {
@@ -275,6 +281,7 @@ public class BigDecimalMath
         * @param x the non-negative argument.
         * @return The n-th root of the BigDecimal rounded to the precision implied by x, x^(1/n).
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal root(final int n, final BigDecimal x)
         {
@@ -323,6 +330,7 @@ public class BigDecimalMath
         * @param y the second argument.
         * @return the square root of the sum of the squares of the two arguments, sqrt(x^2+y^2).
         * @since 2009-06-25
+        * @author Richard J. Mathar
         */
         static public BigDecimal hypot(final BigDecimal x, final BigDecimal y)
         {
@@ -350,6 +358,7 @@ public class BigDecimalMath
         * @param x the second argument.
         * @return the square root of the sum of the squares of the two arguments, sqrt(n^2+x^2).
         * @since 2009-08-05
+        * @author Richard J. Mathar
         */
         static public BigDecimal hypot(final int n, final BigDecimal x)
         {
@@ -488,6 +497,7 @@ public class BigDecimalMath
         * @param mc the required precision of the result
         * @return exp(1) = 2.71828....
         * @since 2009-05-29
+        * @author Richard J. Mathar
         */
         static public BigDecimal exp(final MathContext mc)
         {
@@ -772,6 +782,7 @@ public class BigDecimalMath
         * @return x^y.
         *  The estimation of the relative error in the result is |log(x)*err(y)|+|y*err(x)/x|
         * @since 2009-06-01
+        * @author Richard J. Mathar
         */
         static public BigDecimal pow(final BigDecimal x, final BigDecimal y)
         {
@@ -801,7 +812,8 @@ public class BigDecimalMath
         * @param n The exponent.
         * @return x^n.
         * @since 2009-08-13
-        * @since 2010-05-26 handle also n<0 cases.
+        * @since 2010-05-26 handle also cases where n is less than zero.
+        * @author Richard J. Mathar
         */
         static public BigDecimal powRound(final BigDecimal x, final int n)
         {
@@ -831,6 +843,7 @@ public class BigDecimalMath
         *   The current implementation allows n only in the interval of the standard int values.
         * @return x^n.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         static public BigDecimal powRound(final BigDecimal x, final BigInteger n)
         {
@@ -851,6 +864,7 @@ public class BigDecimalMath
         * @param q The exponent.
         * @return x^q.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         static public BigDecimal powRound(final BigDecimal x, final Rational q)
         {
@@ -960,6 +974,7 @@ public class BigDecimalMath
         * @param x The argument in radians.
         * @return sin(x) in the range -1 to 1.
         * @since 2009-06-01
+        * @author Richard J. Mathar
         */
         static public BigDecimal sin(final BigDecimal x)
         {
@@ -1046,6 +1061,7 @@ public class BigDecimalMath
         * @param x The argument in radians.
         * @return cos(x) in the range -1 to 1.
         * @since 2009-06-01
+        * @author Richard J. Mathar
         */
         static public BigDecimal cos(final BigDecimal x)
         {
@@ -1131,6 +1147,7 @@ public class BigDecimalMath
         /** The trigonometric tangent.
         * @param x the argument in radians.
         * @return the tan(x)
+        * @author Richard J. Mathar
         */
         static public BigDecimal tan(final BigDecimal x)
         {
@@ -1198,6 +1215,7 @@ public class BigDecimalMath
         * @param x the argument in radians.
         * @return the cot(x)
         * @since 2009-07-31
+        * @author Richard J. Mathar
         */
         static public BigDecimal cot(final BigDecimal x)
         {
@@ -1261,6 +1279,7 @@ public class BigDecimalMath
         /** The inverse trigonometric sine.
         * @param x the argument.
         * @return the arcsin(x) in radians.
+        * @author Richard J. Mathar
         */
         static public BigDecimal asin(final BigDecimal x)
         {
@@ -1368,6 +1387,7 @@ public class BigDecimalMath
         * @param x the argument.
         * @return the arccos(x) in radians.
         * @since 2009-09-29
+        * @author Richard J. Mathar
         */
         static public BigDecimal acos(final BigDecimal x)
         {
@@ -1396,6 +1416,7 @@ public class BigDecimalMath
         * @param x the argument.
         * @return the principal value of arctan(x) in radians in the range -pi/2 to +pi/2.
         * @since 2009-08-03
+        * @author Richard J. Mathar
         */
         static public BigDecimal atan(final BigDecimal x)
         {
@@ -1489,11 +1510,12 @@ public class BigDecimalMath
         * @return The cosh(x) = (exp(x)+exp(-x))/2 .
         * @author Richard J. Mathar
         * @since 2009-08-19
+        * @since 2015-02-09 corrected result for negative arguments.
         */
         static public BigDecimal cosh(final BigDecimal x)
         {
                 if ( x.compareTo(BigDecimal.ZERO) < 0)
-                        return cos(x.negate());
+                        return cosh(x.negate());
                 else if ( x.compareTo(BigDecimal.ZERO) == 0 )
                         return BigDecimal.ONE ;
                 else
@@ -1710,6 +1732,7 @@ public class BigDecimalMath
         * @param x The argument.
         * @return Gamma(x).
         * @since 2009-08-06
+        * @author Richard J. Mathar
         */
         static public BigDecimal Gamma(final BigDecimal x)
         {
@@ -1800,6 +1823,7 @@ public class BigDecimalMath
         * @param mc The required accuracy in the result.
         * @return Gamma(x).
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         static public BigDecimal Gamma(final Rational q, final MathContext mc)
         {
@@ -1864,6 +1888,7 @@ public class BigDecimalMath
         * @param n The non-negative index.
         * @return (x)_n = x(x+1)(x+2)*...*(x+n-1).
         * @since 2009-08-19
+        * @author Richard J. Mathar
         */
         static public BigDecimal pochhammer(final BigDecimal x, final int n)
         {
@@ -1900,6 +1925,7 @@ public class BigDecimalMath
         * @param x the original value
         * @return the value modulo 2*pi in the interval from 0 to 2*pi.
         * @since 2009-06-01
+        * @author Richard J. Mathar
         */
         static public BigDecimal mod2pi(BigDecimal x)
         {
@@ -1936,6 +1962,7 @@ public class BigDecimalMath
         * @param x The original value
         * @return The value modulo pi, shifted to the interval from -Pi/2 to Pi/2.
         * @since 2009-07-31
+        * @author Richard J. Mathar
         */
         static public BigDecimal modpi(BigDecimal x)
         {
@@ -1976,6 +2003,7 @@ public class BigDecimalMath
         * @param mc Specification of the accuracy of the result.
         * @return zeta(n).
         * @since 2009-08-05
+        * @author Richard J. Mathar
         */
         static public BigDecimal zeta(final int n, final MathContext mc)
         {
@@ -2139,6 +2167,7 @@ public class BigDecimalMath
         * @param n The positive integer argument.
         * @return zeta(n)-1.
         * @since 2009-08-20
+        * @author Richard J. Mathar
         */
         static public double zeta1(final int n)
         {
@@ -2219,6 +2248,7 @@ public class BigDecimalMath
         /** trigonometric cot.
         * @param x The argument.
         * @return cot(x) = 1/tan(x).
+        * @author Richard J. Mathar
         */
         static public double cot(final double x)
         {
@@ -2230,6 +2260,7 @@ public class BigDecimalMath
         * @return psi(x).
         *  The error is sometimes up to 10 ulp, where AS 6.3.15 suffers from cancellation of digits and psi=0
         * @since 2009-08-26
+        * @author Richard J. Mathar
         */
         static public double psi(final double x)
         {
@@ -2298,11 +2329,13 @@ public class BigDecimalMath
 
 
         /** Broadhurst ladder sequence.
-        * @param a The vector of 8 integer arguments
+        * @param n
+        * @param p
         * @param mc Specification of the accuracy of the result
         * @return S_(n,p)(a)
         * @since 2009-08-09
-        * @see <a href="http://arxiv.org/abs/math/9803067">arXiv:math/9803067</a>
+        * <a href="http://arxiv.org/abs/math/9803067">arXiv:math/9803067</a>
+        * @author Richard J. Mathar
         */
         static protected BigDecimal broadhurstBBP(final int n, final int p, final int a[], MathContext mc)
         {
@@ -2347,11 +2380,52 @@ public class BigDecimalMath
                 return res.round(mc) ;
         } /* broadhurstBBP */
 
+
+
+
+
+
+
+        /** Convert the finite representation of a floating point value to
+        * its fraction.
+        * @param x The number to be translated.
+        * @return The rational number with the same decimal expansion as x.
+        * @since 2012-03-09
+        * @author Richard J. Mathar
+        */
+        public static Rational toRational(BigDecimal x)
+        {
+                /* represent the floating point number by the exact rational
+                * variant of the current truncated representation
+                */
+                int s = x.scale() ;
+                if ( s > 0)
+                        return new Rational( x.unscaledValue(), BigInteger.TEN.pow(s) ) ;
+                else
+                        return new Rational( x.unscaledValue().multiply(BigInteger.TEN.pow(-s)), BigInteger.ONE) ;
+        } /* toRational */
+
+        /** Continued fraction.
+        * @param x The number the absolute value of which will be decomposed.
+        * @return A list of the form [a0,a1,a2,a3,...] where
+        *  The decomposition is |x| = a0+1/(a1+1/(a2+1/(a3+...))).
+        * @since 2012-03-09
+        * @author Richard J. Mathar
+        */ 
+        public static Vector<BigInteger> cfrac(final BigDecimal x)
+        {
+                /* forward to the implementation in the Rational class
+                */
+                return toRational(x).cfrac() ;
+        } /* cfrac */
+
+
         /** Add a BigDecimal and a BigInteger.
         * @param x The left summand
         * @param y The right summand
         * @return The sum x+y.
         * @since 2012-03-02
+        * @author Richard J. Mathar
         */
         static public BigDecimal add(final BigDecimal x, final BigInteger y)
         {
@@ -2364,6 +2438,7 @@ public class BigDecimalMath
         * @param y The right summand
         * @return The sum x+y.
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal addRound(final BigDecimal x, final BigDecimal y)
         {
@@ -2373,6 +2448,33 @@ public class BigDecimalMath
                 double errR = Math.abs( y.ulp().doubleValue()/2. ) + Math.abs( x.ulp().doubleValue()/2. ) ;
                 MathContext mc = new MathContext( err2prec(resul.doubleValue(),errR) ) ;
                 return resul.round(mc) ;
+        } /* addRound */
+
+        /** Add and round according to the larger of the two ulp's.
+        * @param x The left summand
+        * @param y The right summand
+        * @return The sum x+y.
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex addRound(final BigComplex x, final BigDecimal y)
+        {
+                final BigDecimal R = addRound(x.re,y) ;
+                return new BigComplex(R,x.im) ;
+        } /* addRound */
+
+        /** Add and round according to the larger of the two ulp's.
+        * @param x The left summand
+        * @param y The right summand
+        * @return The sum x+y.
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex addRound(final BigComplex x, final BigComplex y)
+        {
+                final BigDecimal R = addRound(x.re,y.re) ;
+                final BigDecimal I = addRound(x.im,y.im) ;
+                return new BigComplex(R,I) ;
         } /* addRound */
 
         /** Subtract and round according to the larger of the two ulp's.
@@ -2391,11 +2493,26 @@ public class BigDecimalMath
                 return resul.round(mc) ;
         } /* subtractRound */
 
+        /** Subtract and round according to the larger of the two ulp's.
+        * @param x The left summand
+        * @param y The right summand
+        * @return The difference x-y.
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex subtractRound(final BigComplex x, final BigComplex y)
+        {
+                final BigDecimal R = subtractRound(x.re,y.re) ;
+                final BigDecimal I = subtractRound(x.im,y.im) ;
+                return new BigComplex(R,I) ;
+        } /* subtractRound */
+
         /** Multiply and round.
         * @param x The left factor.
         * @param y The right factor.
         * @return The product x*y.
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal multiplyRound(final BigDecimal x, final BigDecimal y)
         {
@@ -2409,9 +2526,38 @@ public class BigDecimalMath
 
         /** Multiply and round.
         * @param x The left factor.
+        * @param y The right factor.
+        * @return The product x*y.
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex multiplyRound(final BigComplex x, final BigDecimal y)
+        {
+                BigDecimal R = multiplyRound(x.re,y) ;
+                BigDecimal I = multiplyRound(x.im,y) ;
+                return new BigComplex(R,I) ;
+        } /* multiplyRound */
+
+        /** Multiply and round.
+        * @param x The left factor.
+        * @param y The right factor.
+        * @return The product x*y.
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex multiplyRound(final BigComplex x, final BigComplex y)
+        {
+                BigDecimal R = subtractRound(multiplyRound(x.re,y.re), multiplyRound(x.im,y.im)) ;
+                BigDecimal I = addRound(multiplyRound(x.re,y.im), multiplyRound(x.im,y.re)) ;
+                return new BigComplex(R,I) ;
+        } /* multiplyRound */
+
+        /** Multiply and round.
+        * @param x The left factor.
         * @param f The right factor.
         * @return The product x*f.
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal multiplyRound(final BigDecimal x, final Rational f)
         {
@@ -2435,6 +2581,7 @@ public class BigDecimalMath
         * @param n The right factor.
         * @return The product x*n.
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal multiplyRound(final BigDecimal x, final int n)
         {
@@ -2450,6 +2597,7 @@ public class BigDecimalMath
         * @param n The right factor.
         * @return the product x*n
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal multiplyRound(final BigDecimal x, final BigInteger n)
         {
@@ -2465,6 +2613,7 @@ public class BigDecimalMath
         * @param y The denominator
         * @return the divided x/y
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal divideRound(final BigDecimal x, final BigDecimal y)
         {
@@ -2479,11 +2628,60 @@ public class BigDecimalMath
                 return scalePrec(resul,mc) ;
         }
 
+        /** Build the inverse and maintain the approximate accuracy.
+        * @param z The denominator
+        * @return The divided 1/z = [Re(z)-i*Im(z)]/ [Re^2 z + Im^2 z]
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex invertRound(final BigComplex z)
+        {
+                if (z.im.compareTo(BigDecimal.ZERO) == 0)
+                {
+                        /* In this case with vanishing Im(x), the result is  simply 1/Re z.
+                        */
+                        final MathContext mc = new MathContext( z.re.precision() ) ;
+                        return new BigComplex( BigDecimal.ONE.divide( z.re, mc) ) ;
+                }
+                else if (z.re.compareTo(BigDecimal.ZERO) == 0)
+                {
+                        /* In this case with vanishing Re(z), the result is  simply -i/Im z
+                        */
+                        final MathContext mc = new MathContext( z.im.precision() ) ;
+                        return new BigComplex(BigDecimal.ZERO, BigDecimal.ONE.divide( z.im, mc).negate() ) ;
+                }
+                else 
+                {
+                        /* 1/(x.re+I*x.im) = 1/(x.re+x.im^2/x.re) - I /(x.im +x.re^2/x.im)
+                        */
+                        BigDecimal R  = addRound(z.re, divideRound(multiplyRound(z.im,z.im), z.re) ) ;
+                        BigDecimal I  = addRound(z.im, divideRound(multiplyRound(z.re,z.re), z.im) ) ;
+                        MathContext mc = new MathContext( 1+R.precision() ) ;
+                        R = BigDecimal.ONE.divide(R,mc) ;
+                        mc = new MathContext( 1+I.precision() ) ;
+                        I = BigDecimal.ONE.divide(I,mc) ;
+                        return new BigComplex(R,I.negate()) ;
+                }
+        }
+
+        /** Divide and round.
+        * @param x The numerator
+        * @param y The denominator
+        * @return the divided x/y
+        * @since 2010-07-19
+        * @author Richard J. Mathar
+        */
+        static public BigComplex divideRound(final BigComplex x, final BigComplex y)
+        {
+                return multiplyRound( x, invertRound(y) ) ;
+        }
+
         /** Divide and round.
         * @param x The numerator
         * @param n The denominator
         * @return the divided x/n
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal divideRound(final BigDecimal x, final int n)
         {
@@ -2498,6 +2696,7 @@ public class BigDecimalMath
         * @param n The denominator
         * @return the divided x/n
         * @since 2009-07-30
+        * @author Richard J. Mathar
         */
         static public BigDecimal divideRound(final BigDecimal x, final BigInteger n)
         {
@@ -2512,6 +2711,7 @@ public class BigDecimalMath
         * @param x The denominator
         * @return the divided n/x
         * @since 2009-08-05
+        * @author Richard J. Mathar
         */
         static public BigDecimal divideRound(final BigInteger n, final BigDecimal x)
         {
@@ -2522,10 +2722,35 @@ public class BigDecimalMath
         } /* divideRound */
 
         /** Divide and round.
+        * @param n The numerator
+        * @param x The denominator
+        * @return the divided n/x
+        * @since 2012-03-01
+        * @author Richard J. Mathar
+        */
+        static public BigComplex divideRound(final BigInteger n, final BigComplex x)
+        {
+                /* catch case of real-valued denominator first
+                */
+                if ( x.im.compareTo(BigDecimal.ZERO) == 0 )
+                        return new BigComplex( divideRound(n,x.re),BigDecimal.ZERO ) ;
+                else if ( x.re.compareTo(BigDecimal.ZERO) == 0 )
+                        return new BigComplex( BigDecimal.ZERO, divideRound(n,x.im).negate() ) ;
+                        
+                BigComplex z = invertRound(x) ;
+                /* n/(x+iy) = nx/(x^2+y^2) -nyi/(x^2+y^2)       
+                */
+                BigDecimal repart = multiplyRound(z.re, n) ;
+                BigDecimal impart = multiplyRound(z.im, n) ;
+                return new BigComplex( repart, impart) ;
+        } /* divideRound */
+
+        /** Divide and round.
         * @param n The numerator.
         * @param x The denominator.
         * @return the divided n/x.
         * @since 2009-08-05
+        * @author Richard J. Mathar
         */
         static public BigDecimal divideRound(final int n, final BigDecimal x)
         {
@@ -2540,10 +2765,23 @@ public class BigDecimalMath
         * @param x The input value
         * @param d The (positive) value of zeros to be added as least significant digits.
         * @return The same value as the input but with increased (pseudo) precision.
+        * @author Richard J. Mathar
         */
         static public BigDecimal scalePrec(final BigDecimal x, int d)
         {
                 return x.setScale(d+x.scale()) ;
+        }
+
+        /** Append decimal zeros to the value. This returns a value which appears to have
+        * a higher precision than the input.
+        * @param x The input value
+        * @param d The (positive) value of zeros to be added as least significant digits.
+        * @return The same value as the input but with increased (pseudo) precision.
+        * @author Richard J. Mathar
+        */
+        static public BigComplex scalePrec(final BigComplex x, int d)
+        {
+                return new BigComplex( scalePrec(x.re,d),scalePrec(x.im,d)) ;
         }
 
         /** Boost the precision by appending decimal zeros to the value. This returns a value which appears to have
@@ -2551,6 +2789,7 @@ public class BigDecimalMath
         * @param x The input value
         * @param mc The requirement on the minimum precision on return.
         * @return The same value as the input but with increased (pseudo) precision.
+        * @author Richard J. Mathar
         */
         static public BigDecimal scalePrec(final BigDecimal x, final MathContext mc)
         {
@@ -2567,6 +2806,7 @@ public class BigDecimalMath
         * @return The number of valid digits in x.
         *    The value is rounded down, and on the pessimistic side for that reason.
         * @since 2009-06-25
+        * @author Richard J. Mathar
         */
         static public int err2prec(BigDecimal x, BigDecimal xerr)
         {
@@ -2583,6 +2823,7 @@ public class BigDecimalMath
         *    in a "half width" (half of the error bar) form.
         *    The value is rounded down, and on the pessimistic side for that reason.
         * @since 2009-05-30
+        * @author Richard J. Mathar
         */
         static public int err2prec(double x, double xerr)
         {
@@ -2598,6 +2839,7 @@ public class BigDecimalMath
         * @return The number of valid digits in x.
         *    The value is rounded down, and on the pessimistic side for that reason.
         * @since 2009-08-05
+        * @author Richard J. Mathar
         */
         static public int err2prec(double xerr)
         {
@@ -2615,6 +2857,7 @@ public class BigDecimalMath
         * @return the absolute error in x.
         *    Derived from the an accuracy of one half of the ulp.
         * @since 2009-08-09
+        * @author Richard J. Mathar
         */
         static public double prec2err(final double x, final int prec)
         {

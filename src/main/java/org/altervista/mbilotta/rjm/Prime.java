@@ -48,6 +48,7 @@ public class Prime
         /** Default constructor initializing a list of primes up to 17.
         * 17 is enough to call the Miller-Rabin tests on the first 7 primes without further
         * action.
+        * @author Richard J. Mathar
         */
         public Prime()
         {
@@ -67,6 +68,7 @@ public class Prime
         /** Test if a number is a prime.
         * @param n the integer to be tested for primality
         * @return true if prime, false if not
+        * @author Richard J. Mathar
         */
         public boolean contains(BigInteger n)
         {
@@ -89,6 +91,7 @@ public class Prime
         * @param a the base
         * @return true if the test is passed, so n may be a prime.
         *   false if the test is not passed, so n is not a prime.
+        * @author Richard J. Mathar
         * @since 2010-02-25
         */
         public boolean isSPP(final BigInteger n, final BigInteger a)
@@ -136,6 +139,7 @@ public class Prime
         * @param n The prime candidate
         * @return -1 if n is a composite, 1 if it is a prime, 0 if it may be a prime.
         * @since 2010-02-25
+        * @author Richard J. Mathar
         */
         public int millerRabin(final BigInteger n)
         {
@@ -168,9 +172,10 @@ public class Prime
                 return 1;
         }
 
-        /** return the ithprime
+        /** return the ith prime
         * @param i the zero-based index into the list of primes
         * @return the ith prime. This is 2 if i=0, 3 if i=1 and so forth.
+        * @author Richard J. Mathar
         */
         public BigInteger at(int i)
         {
@@ -184,9 +189,10 @@ public class Prime
                 return ( a.elementAt(i) ) ;
         }
 
-        /** return the count of primes <= n
+        /** return the count of primes less than or equal to n
         * @param n the upper limit of the scan
-        * @return the ith prime. This is 2 if i=0, 3 if i=1 and so forth.
+        * @return 0 if n is less than 2; 1 if n=2; 2 if n=3 or 4; 3 if n=5 or 6; and so forth.
+        * @author Richard J. Mathar
         */
         public BigInteger pi(BigInteger n)
         {
@@ -205,6 +211,7 @@ public class Prime
         * @param n lower limit of the search
         * @return the next larger prime.
         * @since 2008-10-16
+        * @author Richard J. Mathar
         */
         public BigInteger nextprime(BigInteger n)
         {
@@ -229,6 +236,7 @@ public class Prime
         * @param n upper limit of the search
         * @return the next smaller prime.
         * @since 2008-10-17
+        * @author Richard J. Mathar
         */
         public BigInteger prevprime(BigInteger n)
         {
@@ -250,6 +258,7 @@ public class Prime
 
         /** extend the list of known primes up to n
         * @param n the maximum integer known to be prime or not prime after the call.
+        * @author Richard J. Mathar
         */
         protected void growto(BigInteger n)
         {
@@ -281,10 +290,11 @@ public class Prime
         }
         /** Test program.
         * Usage: java -cp . org.nevec.rjm.Prime n<br>
-        * This takes a single argument (n) and prints prime(n), the previous and next prime, and pi(n).
+        * @param args This takes a single argument (n) and prints prime(n), the previous and next prime, and pi(n).
         * @since 2006-08-14
+        * @author Richard J. Mathar
         */
-        public static void main(String[] args) throws Exception
+        public static void main(String[] args)
         {
                 Prime a = new Prime() ;
                 int n = (new Integer(args[0])).intValue() ;

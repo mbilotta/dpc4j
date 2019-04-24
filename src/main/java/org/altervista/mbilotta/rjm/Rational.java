@@ -25,9 +25,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Vector;
 
 /** Fractions (rational numbers).
-* They are divisions of two BigInteger numbers, reduced to coprime
+* They are ratios of two BigInteger numbers, reduced to coprime
 * numerator and denominator.
 * @since 2006-06-25
 * @author Richard J. Mathar
@@ -48,12 +49,13 @@ public class Rational implements Cloneable, Comparable<Rational>
         static public BigInteger MAX_INT = new BigInteger("2147483647") ;
         static public BigInteger MIN_INT = new BigInteger("-2147483648") ;
 
-        /** The constant 1.
-        */
-        static Rational ONE = new Rational(1,1) ;
         /** The constant 0.
         */
         static public Rational ZERO = new Rational() ;
+
+        /** The constant 1.
+        */
+        static Rational ONE = new Rational(1,1) ;
 
         /** The constant 1/2
         * @since 2010-05-25
@@ -62,61 +64,67 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Default ctor, which represents the zero.
         * @since 2007-11-17
+        * @author Richard J. Mathar
         */
         public Rational()
         {
                 a = BigInteger.ZERO ;
                 b = BigInteger.ONE ;
-        }
+        } /* ctor */
 
         /** ctor from a numerator and denominator.
         * @param a the numerator.
         * @param b the denominator.
+        * @author Richard J. Mathar
         */
         public Rational(BigInteger a, BigInteger b)
         {
                 this.a = a ;
                 this.b = b ;
                 normalize() ;
-        }
+        } /* ctor */
 
         /** ctor from a numerator.
         * @param a the BigInteger.
+        * @author Richard J. Mathar
         */
         public Rational(BigInteger a)
         {
                 this.a = a ;
                 b = new BigInteger("1") ;
-        }
+        } /* ctor */
 
         /** ctor from a numerator and denominator.
         * @param a the numerator.
         * @param b the denominator.
+        * @author Richard J. Mathar
         */
         public Rational(int a, int b)
         {
                 this(new BigInteger(""+a),new BigInteger(""+b)) ;
-        }
+        } /* ctor */
 
         /** ctor from an integer.
         * @param n the integer to be represented by the new instance.
         * @since 2010-07-18
+        * @author Richard J. Mathar
         */
         public Rational(int n)
         {
                 this(n,1) ;
-        }
+        } /* ctor */
 
         /** ctor from a string representation.
         * @param str the string.
         *   This either has a slash in it, separating two integers, or, if there is no slash,
         *   is representing the numerator with implicit denominator equal to 1.
         * Warning: this does not yet test for a denominator equal to zero
+        * @author Richard J. Mathar
         */
         public Rational(String str) throws NumberFormatException
         {
                 this(str,10) ;
-        }
+        } /* ctor */
 
         /** ctor from a string representation in a specified base.
         * @param str the string.
@@ -124,6 +132,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         *   is just representing the numerator.
         * @param radix the number base for numerator and denominator
         * Warning: this does not yet test for a denominator equal to zero
+        * @author Richard J. Mathar
         */
         public Rational(String str, int radix) throws NumberFormatException
         {
@@ -142,10 +151,43 @@ public class Rational implements Cloneable, Comparable<Rational>
                         b = new BigInteger(str.substring(hasslah+1),radix) ;
                         normalize() ;
                 }
-        }
+        } /* ctor */
+
+        /** ctor from a terminating continued fraction.
+        * Constructs the value of cfr[0]+1/(cfr[1]+1/(cfr[2]+...))).
+        * @param cfr The coefficients cfr[0], cfr[1],... of the continued fraction.
+        *  An exception is thrown if any of these is zero.
+        * @since 2012-03-08
+        * @author Richard J. Mathar
+        */
+        public Rational(Vector<BigInteger> cfr)
+        {
+                if ( cfr.size() == 0)
+                        throw new NumberFormatException("Empty continued fraction") ;
+                else if ( cfr.size() == 1)
+                {
+                        this.a = cfr.firstElement() ;
+                        this.b = BigInteger.ONE ;
+                }
+                else
+                {
+                        /* recursive this = cfr[0]+1/(cfr[1]+...) where cfr[1]+... = rec =rec.a/rec.b
+                        * this = cfr[0]+rec.b/rec.a = (cfr[0]*rec.a+rec.b)/rec.a .
+                        * Create a cloned version of references to cfr, without cfr[0]
+                        */
+                        Vector<BigInteger> clond = new Vector<BigInteger>() ;
+                        for(int i=1 ; i < cfr.size() ; i++)
+                                clond.add(cfr.elementAt(i)) ;
+                        Rational rec = new Rational(clond) ;
+                        this.a = cfr.firstElement().multiply(rec.a).add(rec.b) ;
+                        this.b = rec.a ;
+                        normalize() ;
+                }
+        } /* ctor */
 
         /** Create a copy.
         * @since 2008-11-07
+        * @author Richard J. Mathar
         */
         public Rational clone()
         {
@@ -160,6 +202,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Multiply by another fraction.
         * @param val a second rational number.
         * @return the product of this with the val.
+        * @author Richard J. Mathar
         */
         public Rational multiply(final Rational val)
         {
@@ -174,6 +217,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Multiply by a BigInteger.
         * @param val a second number.
         * @return the product of this with the value.
+        * @author Richard J. Mathar
         */
         public Rational multiply(final BigInteger val)
         {
@@ -184,6 +228,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Multiply by an integer.
         * @param val a second number.
         * @return the product of this with the value.
+        * @author Richard J. Mathar
         */
         public Rational multiply(final int val)
         {
@@ -195,6 +240,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param exponent the exponent.
         * @return this value raised to the power given by the exponent.
         *  If the exponent is 0, the value 1 is returned.
+        * @author Richard J. Mathar
         */
         public Rational pow(int exponent)
         {
@@ -213,6 +259,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param exponent the exponent.
         * @return this value raised to the power given by the exponent.
         *  If the exponent is 0, the value 1 is returned.
+        * @author Richard J. Mathar
         * @since 2009-05-18
         */
         public Rational pow(BigInteger exponent) throws NumberFormatException
@@ -232,6 +279,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         *  2 for the square root, 3 for the third root etc
         * @return this value raised to the inverse power given by the root argument, this^(1/r).
         * @since 2009-05-18
+        * @author Richard J. Mathar
         */
         public Rational root(BigInteger r) throws NumberFormatException
         {
@@ -266,6 +314,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @return This value raised to the power given by the exponent.
         *  If the exponent is 0, the value 1 is returned.
         * @since 2009-05-18
+        * @author Richard J. Mathar
         */
         public Rational pow(Rational exponent) throws NumberFormatException
         {
@@ -282,6 +331,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Divide by another fraction.
         * @param val A second rational number.
         * @return The value of this/val
+        * @author Richard J. Mathar
         */
         public Rational divide(final Rational val)
         {
@@ -298,6 +348,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Divide by an integer.
         * @param val a second number.
         * @return the value of this/val
+        * @author Richard J. Mathar
         */
         public Rational divide(BigInteger val)
         {
@@ -310,6 +361,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Divide by an integer.
         * @param val A second number.
         * @return The value of this/val
+        * @author Richard J. Mathar
         */
         public Rational divide(int val)
         {
@@ -322,6 +374,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Add another fraction.
         * @param val The number to be added
         * @return this+val.
+        * @author Richard J. Mathar
         */
         public Rational add(Rational val)
         {
@@ -333,6 +386,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Add another integer.
         * @param val The number to be added
         * @return this+val.
+        * @author Richard J. Mathar
         */
         public Rational add(BigInteger val)
         {
@@ -344,6 +398,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param val The number to be added
         * @return this+val.
         * @since May 26 2010
+        * @author Richard J. Mathar
         */
         public Rational add(int val)
         {
@@ -353,6 +408,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Compute the negative.
         * @return -this.
+        * @author Richard J. Mathar
         */
         public Rational negate()
         {
@@ -362,6 +418,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Subtract another fraction.
         * @param val the number to be subtracted from this
         * @return this - val.
+        * @author Richard J. Mathar
         */
         public Rational subtract(Rational val)
         {
@@ -372,6 +429,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Subtract an integer.
         * @param val the number to be subtracted from this
         * @return this - val.
+        * @author Richard J. Mathar
         */
         public Rational subtract(BigInteger val)
         {
@@ -382,6 +440,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Subtract an integer.
         * @param val the number to be subtracted from this
         * @return this - val.
+        * @author Richard J. Mathar
         */
         public Rational subtract(int val)
         {
@@ -448,6 +507,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Get the numerator.
         * @return The numerator of the reduced fraction.
+        * @author Richard J. Mathar
         */
         public BigInteger numer()
         {
@@ -456,6 +516,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Get the denominator.
         * @return The denominator of the reduced fraction.
+        * @author Richard J. Mathar
         */
         public BigInteger denom()
         {
@@ -464,6 +525,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Absolute value.
         * @return The absolute (non-negative) value of this.
+        * @author Richard J. Mathar
         */
         public Rational abs()
         {
@@ -472,6 +534,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** floor(): the nearest integer not greater than this.
         * @return The integer rounded towards negative infinity.
+        * @author Richard J. Mathar
         */
         public BigInteger floor()
         {
@@ -488,6 +551,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** ceil(): the nearest integer not smaller than this.
         * @return The integer rounded towards positive infinity.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         public BigInteger ceil()
         {
@@ -503,6 +567,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Remove the fractional part.
         * @return The integer rounded towards zero.
+        * @author Richard J. Mathar
         */
         public BigInteger trunc()
         {
@@ -518,6 +583,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param val the other constant to compare with
         * @return -1, 0 or 1 if this number is numerically less than, equal to,
         *    or greater than val.
+        * @author Richard J. Mathar
         */
         public int compareTo(final Rational val)
         {
@@ -533,6 +599,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param val the other constant to compare with
         * @return -1, 0 or 1 if this number is numerically less than, equal to,
         *    or greater than val.
+        * @author Richard J. Mathar
         */
         public int compareTo(final BigInteger val)
         {
@@ -543,6 +610,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Return a string in the format number/denom.
         * If the denominator equals 1, print just the numerator without a slash.
         * @return the human-readable version in base 10
+        * @author Richard J. Mathar
         */
         public String toString()
         {
@@ -555,6 +623,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Return a double value representation.
         * @return The value with double precision.
         * @since 2008-10-26
+        * @author Richard J. Mathar
         */
         public double doubleValue()
         {
@@ -569,6 +638,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         /** Return a float value representation.
         * @return The value with single precision.
         * @since 2009-08-06
+        * @author Richard J. Mathar
         */
         public float floatValue()
         {
@@ -580,6 +650,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param mc the mathematical context which determines precision, rounding mode etc
         * @return A representation as a BigDecimal floating point number.
         * @since 2008-10-26
+        * @author Richard J. Mathar
         */
         public BigDecimal BigDecimalValue(MathContext mc)
         {
@@ -598,6 +669,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param digits The precision (number of digits)
         * @return The human-readable version in base 10.
         * @since 2008-10-25
+        * @author Richard J. Mathar
         */
         public String toFString(int digits)
         {
@@ -615,6 +687,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param val The other constant to compare with
         * @return The arithmetic maximum of this and val.
         * @since 2008-10-19
+        * @author Richard J. Mathar
         */
         public Rational max(final Rational val)
         {
@@ -628,6 +701,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param val The other constant to compare with
         * @return The arithmetic minimum of this and val.
         * @since 2008-10-19
+        * @author Richard J. Mathar
         */
         public Rational min(final Rational val)
         {
@@ -641,6 +715,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param n The number of product terms in the evaluation.
         * @return Gamma(this+n)/Gamma(this) = this*(this+1)*...*(this+n-1).
         * @since 2008-10-25
+        * @author Richard J. Mathar
         */
         public Rational Pochhammer(final BigInteger n)
         {
@@ -664,6 +739,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * @param n The number of product terms in the evaluation.
         * @return Gamma(this+n)/GAMMA(this).
         * @since 2008-11-13
+        * @author Richard J. Mathar
         */
         public Rational Pochhammer(int n)
         {
@@ -674,6 +750,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * Equivalent to the indication whether a conversion to an integer
         * can be exact.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         public boolean isBigInteger()
         {
@@ -684,6 +761,7 @@ public class Rational implements Cloneable, Comparable<Rational>
         * Equivalent to the indication whether a conversion to an integer
         * can be exact.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         public boolean isInteger()
         {
@@ -695,6 +773,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Conversion to an integer value, if this can be done exactly.
         * @since 2011-02-13
+        * @author Richard J. Mathar
         */
         int intValue()
         {
@@ -705,6 +784,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** Conversion to a BigInteger value, if this can be done exactly.
         * @since 2012-03-02
+        * @author Richard J. Mathar
         */
         BigInteger BigIntegerValue()
         {
@@ -715,6 +795,7 @@ public class Rational implements Cloneable, Comparable<Rational>
 
         /** True if the value is a fraction of two integers in the range of the standard integer.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         public boolean isIntegerFrac()
         {
@@ -722,19 +803,44 @@ public class Rational implements Cloneable, Comparable<Rational>
                         && b.compareTo(MAX_INT) <= 0 && b.compareTo(MIN_INT) >= 0 ) ;
         } /* Rational.isIntegerFrac */
 
-        /** The sign: 1 if the number is >0, 0 if ==0, -1 if <0
+        /** The sign: 1 if the number is larger than zero, 0 if it equals zero, -1 if it is smaller than zero.
         * @return the signum of the value.
         * @since 2010-05-26
+        * @author Richard J. Mathar
         */
         public int signum()
         {
                 return ( b.signum() * a.signum() ) ;
         } /* Rational.signum */
 
+        /** Terminating continued fractions.
+        * @return The list of a0, a1, a2,... in this =a0+1/(a1+1/(a2+1/(a3+...)))).
+        *  If this here is zero, the list is empty.
+        * @since 2012-03-09
+        * @author Richard J. Mathar
+        */
+        public Vector<BigInteger> cfrac()
+        {
+                if ( signum() < 0 )
+                        throw new NumberFormatException("Unsupported cfrac for negative "+this) ;
+                Vector<BigInteger> cf = new Vector<BigInteger>() ;
+                if ( signum() != 0)
+                {
+                        BigInteger[] nRem = a.divideAndRemainder(b) ;
+                        cf.add( nRem[0]) ;
+                        /* recursive call : this = nRem[0]+nRem[1]/b = nRem[0] + 1/(b/nRem[1])
+                        */
+                        if ( nRem[1].signum() != 0 )
+                                cf.addAll( (new Rational(b,nRem[1])).cfrac() ) ;
+                }
+                return cf ;
+        } /* Rational.cfrac */
+
         /** Common lcm of the denominators of a set of rational values.
         * @param vals The list/set of the rational values.
         * @return LCM(denom of first, denom of second, ..,denom of last)
         * @since 2012-03-02
+        * @author Richard J. Mathar
         */
         static public BigInteger lcmDenom(final Rational[] vals)
         {
@@ -744,9 +850,37 @@ public class Rational implements Cloneable, Comparable<Rational>
                 return l ;
         } /* Rational.lcmDenom */
 
+        /** The Harmonic number at the index specified.
+        * @param n the index, non-negative.
+        * @return the sum of the inverses of the integers from 1 to n.
+        *   H_1=1 for n=1, H_2=3/2 for n=2 etc.
+        *   For values of n less than 1, zero is returned.
+        * @since 2008-10-19
+        * @author Richard J. Mathar
+        * @author Richard J. Mathar
+        */
+        static public Rational harmonic(int n)
+        {
+                if ( n < 1)
+                        return(new Rational(0,1)) ;
+                else
+                {
+                        /* start with 1 as the result
+                        */
+                        Rational a = new Rational(1,1) ;
+
+                        /* add 1/i for i=2..n
+                        */
+                        for( int i=2 ; i <=n ; i++)
+                                a = a.add(new Rational(1,i)) ;
+                        return a ;
+                }
+        } /* harmonic */
+
         /** Normalize to coprime numerator and denominator.
         * Also copy a negative sign of the denominator to the numerator.
         * @since 2008-10-19
+        * @author Richard J. Mathar
         */
         protected void normalize()
         {
@@ -765,4 +899,3 @@ public class Rational implements Cloneable, Comparable<Rational>
                 }
         } /* Rational.normalize */
 } /* Rational */
-

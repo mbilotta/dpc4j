@@ -31,20 +31,23 @@ import java.util.Vector;
 */
 public class BigIntegerMath
 {
+
+
         /** Evaluate binomial(n,k).
         * @param n The upper index 
         * @param k The lower index
         * @return The binomial coefficient
+        * @author Richard J. Mathar
         */
         static public BigInteger binomial(final int n, final int k)
         {
                 if ( k == 0 ) 
-                        return(BigInteger.ONE) ;
-                BigInteger bin = new BigInteger(""+n) ;
+                        return BigInteger.ONE ;
+                BigInteger bin = BigInteger.valueOf((long)n) ;
                 BigInteger n2 = bin ;
-                for(BigInteger i= new BigInteger(""+(k-1)) ; i.compareTo(BigInteger.ONE) >= 0 ; i = i.subtract(BigInteger.ONE) )
+                for(BigInteger i= BigInteger.valueOf((long)(k-1)) ; i.compareTo(BigInteger.ONE) >= 0 ; i = i.subtract(BigInteger.ONE) )
                         bin = bin.multiply(n2.subtract(i)) ;
-                for(BigInteger i= new BigInteger(""+k) ; i.compareTo(BigInteger.ONE) == 1 ; i = i.subtract(BigInteger.ONE) )
+                for(BigInteger i= BigInteger.valueOf((long)k) ; i.compareTo(BigInteger.ONE) == 1 ; i = i.subtract(BigInteger.ONE) )
                         bin = bin.divide(i) ;
                 return ( bin) ;
         } /* binomial */
@@ -54,6 +57,7 @@ public class BigIntegerMath
         * @param k The lower index
         * @return The binomial coefficient
         * @since 2008-10-15
+        * @author Richard J. Mathar
         */
         static public BigInteger binomial(final BigInteger n, final BigInteger k)
         {
@@ -62,7 +66,7 @@ public class BigIntegerMath
                 if ( k.compareTo(BigInteger.ZERO) == 0 ) 
                         return(BigInteger.ONE) ;
 
-                BigInteger bin = new BigInteger(""+n) ;
+                BigInteger bin = n;
 
                 /* the following version first calculates n(n-1)(n-2)..(n-k+1)
                 * in the first loop, and divides this product through k(k-1)(k-2)....2
@@ -72,7 +76,7 @@ public class BigIntegerMath
                 * BigInteger i= k.subtract(BigInteger.ONE) ;
                 * for( ; i.compareTo(BigInteger.ONE) >= 0 ; i = i.subtract(BigInteger.ONE) )
                 *       bin = bin.multiply(n2.subtract(i)) ;
-                * i= new BigInteger(""+k) ;
+                * i= BigInteger.valueOf(k) ;
                 * for( ; i.compareTo(BigInteger.ONE) == 1 ; i = i.subtract(BigInteger.ONE) )
                 *       bin = bin.divide(i) ;
                 */
@@ -81,7 +85,7 @@ public class BigIntegerMath
                 * This is roughly the best way to keep the individual intermediate products small
                 * and in the integer domain. First replace C(n,k) by C(n,n-k) if n-k<k.
                 */
-                BigInteger truek = new BigInteger(k.toString()) ;
+                BigInteger truek = k ;
                 if ( n.subtract(k).compareTo(k) < 0 )
                         truek = n.subtract(k) ;
 
@@ -89,8 +93,8 @@ public class BigIntegerMath
                 * Have already initialized bin=n=C(n,1) above. Start definining the factorial
                 * in the denominator, named fden
                 */
-                BigInteger i = new BigInteger("2") ;
-                BigInteger num = new BigInteger(n.toString()) ;
+                BigInteger i = BigInteger.valueOf(2L) ;
+                BigInteger num = n ;
                 /* a for-loop   (i=2;i<= truek;i++)
                 */
                 for( ; i.compareTo(truek) <= 0 ; i = i.add(BigInteger.ONE) )
@@ -109,6 +113,7 @@ public class BigIntegerMath
         * @param n the main argument which defines the divisors
         * @param k the lower index, which defines the power
         * @return The sum of the k-th powers of the positive divisors
+        * @author Richard J. Mathar
         */
         static public BigInteger sigmak(final BigInteger n, final int k)
         {
@@ -148,6 +153,43 @@ public class BigIntegerMath
                 return (new Ifactor(n.abs())).sigma().n ;
         }
 
+        /** Compute phi(n), the Euler totient function.
+        * @param n The positive argument of the function.
+        * @return phi(n)
+        * <a href="http://oeis.org/A000010">A000010</a> in the OEIS.
+        * @since 2008-10-14
+        * @since 2012-03-04 Adapted to new Ifactor representation.
+        * @author Richard J. Mathar
+        */
+        public BigInteger eulerPhi(final int n)
+        {
+                return eulerPhi(BigInteger.valueOf((long)n) ) ;
+        } /* eulerPhi */
+
+        /** Compute phi(n), the Euler totient function.
+        * @param n The positive argument of the function.
+        * @return phi(n)
+        * <a href="http://oeis.org/A000010">A000010</a> in the OEIS.
+        * @since 2008-10-14
+        * @since 2012-03-04 Adapted to new Ifactor representation.
+        * @author Richard J. Mathar
+        */
+        public BigInteger eulerPhi(final BigInteger n)
+        {
+                if ( n.compareTo(BigInteger.ZERO) <= 0 )
+                        throw new ArithmeticException("negative argument "+n+ " of EulerPhi") ;
+                final Ifactor prFact = new Ifactor(n) ;
+                BigInteger phi = n ;
+                if ( n.compareTo(BigInteger.ONE) > 0 )
+                        for(int i=0 ; i < prFact.primeexp.size() ; i += 2)
+                        {
+                                BigInteger p = new BigInteger(prFact.primeexp.elementAt(i).toString()) ;
+                                BigInteger p_1 = p.subtract(BigInteger.ONE) ;
+                                phi = phi.multiply(p_1).divide(p) ;
+                        }
+                return phi ;
+        } /* eulerPhi */
+
         /** Evaluate floor(sqrt(n)).
         * @param n The non-negative argument.
         * @return The integer square root. The square root rounded down.
@@ -160,7 +202,7 @@ public class BigIntegerMath
                         throw new ArithmeticException("Negative argument "+ n) ;
                 final double resul= Math.sqrt((double)n) ;
                 return (int)Math.round(resul) ;
-        }
+        } /* isqrt */
 
         /** Evaluate floor(sqrt(n)).
         * @param n The non-negative argument.
@@ -175,7 +217,7 @@ public class BigIntegerMath
                         throw new ArithmeticException("Negative argument "+ n) ;
                 final double resul= Math.sqrt((double)n) ;
                 return Math.round(resul) ;
-        }
+        } /* isqrt */
 
         /** Evaluate floor(sqrt(n)).
         * @param n The non-negative argument.
@@ -200,7 +242,7 @@ public class BigIntegerMath
                         x = new BigInteger(""+Math.round(resul)) ;
                 }
 
-                final BigInteger two = new BigInteger("2") ;
+                final BigInteger two = BigInteger.valueOf(2L) ;
                 while ( true)
                 {
                         /* check whether the result is accurate, x^2 =n
@@ -220,7 +262,50 @@ public class BigIntegerMath
                         xplus2 = x2.subtract(n).divide(x).divide(two) ;
                         x = x.subtract(xplus2) ;
                 }
-        }
+        } /* isqrt */
+
+        /** Evaluate floor(root[n](x)).
+        * @param x The non-negative argument.
+        *  Arguments less than zero throw an ArithmeticException.
+        * @param n The positive inverse power.
+        * @return The integer n-th root of x, rounded down.
+        * @since 2012-11-29
+        * @author Richard J. Mathar
+        */
+        static public BigInteger iroot(final BigInteger x, final int n)
+        {
+                if ( x.compareTo(BigInteger.ZERO) < 0 )
+                        throw new ArithmeticException("Negative argument "+ x.toString()) ;
+                if ( n < 1 )
+                        throw new ArithmeticException("Non-positive argument "+ n) ;
+                /* Start with an estimate from a floating point reduction.
+                */
+                BigInteger r  ;
+                final BigInteger nBig = BigInteger.valueOf((long)n)  ;
+                final int bl = x.bitLength() ;
+                if ( bl > 120)
+                        r = x.shiftRight(bl/n-1) ;
+                else
+                {
+                        final double resul= Math.pow(x.doubleValue(),1.0/n) ;
+                        r = new BigInteger(""+Math.round(resul)) ;
+                }
+
+                while ( true)
+                {
+                        /* check whether the result is accurate, r^n =x
+                        */
+                        BigInteger r2 = r.pow(n) ;
+                        BigInteger rplus2 = r.add(BigInteger.ONE).pow(n) ;
+                        if ( r2.compareTo(x) <= 0 && rplus2.compareTo(x) > 0)
+                                return r ;
+                        rplus2 = r.subtract(BigInteger.ONE).pow(n) ;
+                        if ( rplus2.compareTo(x) <= 0 && r2.compareTo(x) > 0)
+                                return r.subtract(BigInteger.ONE) ;
+                        rplus2 = r2.subtract(x).divide(r.pow(n-1)).divide(nBig) ;
+                        r = r.subtract(rplus2) ;
+                }
+        } /* iroot */
 
         /** Evaluate core(n).
         * Returns the smallest positive integer m such that n/m is a perfect square.
@@ -498,7 +583,7 @@ public class BigIntegerMath
         * @return t(n,k)
         * @since 2009-08-06
         * @author Richard J. Mathar
-        * @see <a href="http://dx.doi.org/10.1080/01630568908816313">P. L. Butzer et al, Num. Funct. Anal. Opt. 10 (5)( 1989) 419-488</a>
+        * <a href="http://dx.doi.org/10.1080/01630568908816313">P. L. Butzer et al, Num. Funct. Anal. Opt. 10 (5)( 1989) 419-488</a>
         */
         static public Rational centrlFactNumt(int n,int k)
         {
@@ -542,7 +627,7 @@ public class BigIntegerMath
         * @return T(n,k)
         * @since 2009-08-06
         * @author Richard J. Mathar
-        * @see <a href="http://dx.doi.org/10.1080/01630568908816313">P. L. Butzer et al, Num. Funct. Anal. Opt. 10 (5)( 1989) 419-488</a>
+        * <a href="http://dx.doi.org/10.1080/01630568908816313">P. L. Butzer et al, Num. Funct. Anal. Opt. 10 (5)( 1989) 419-488</a>
         */
         static public Rational centrlFactNumT(int n,int k)
         {

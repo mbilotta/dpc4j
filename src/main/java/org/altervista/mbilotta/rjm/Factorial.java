@@ -21,8 +21,8 @@
 
 package org.altervista.mbilotta.rjm ;
 
-import java.util.* ;
-import java.math.* ;
+import java.math.BigInteger;
+import java.util.Vector;
 
 
 /** Factorials.
@@ -38,6 +38,7 @@ public class Factorial
 
         /** ctor().
         * Initialize the vector of the factorials with 0!=1 and 1!=1.
+        * @author Richard J. Mathar
         */
         public Factorial()
         {
@@ -51,6 +52,7 @@ public class Factorial
         /** Compute the factorial of the non-negative integer.
         * @param n the argument to the factorial, non-negative.
         * @return the factorial of n.
+        * @author Richard J. Mathar
         */
         public BigInteger at(int n)
         {
@@ -63,6 +65,7 @@ public class Factorial
         /** Compute the factorial of the non-negative integer.
         * @param n the argument to the factorial, non-negative.
         * @return the factorial of n.
+        * @author Richard J. Mathar
         */
         public Ifactor toIfactor(int n)
         {
@@ -75,6 +78,7 @@ public class Factorial
         /** Extend the internal table to cover up to n!
         * @param n The maximum factorial to be supported.
         * @since 2012-02-15
+        * @author Richard J. Mathar
         */
         private void growto(int n)
         {
