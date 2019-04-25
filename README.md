@@ -9,7 +9,7 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 ### Number factories
 
 * __Double__ provides IEEE 754 64-bit floating point calculations. Functions like sine, cosine, exponential, etc. are computed simply using their counterpart methods in the `java.lang.Math` class.
-* __BigDecimal__ provides arbitrary precision calculations by means of the `java.math` package from the standard library. To provide the missing pieces, I brought in classes from [Richard J. Mathar](http://www.mpia.de/~mathar/)'s own work, [A Java Math.BigDecimal Implementation of Core Mathematical Functions](http://arxiv.org/abs/0908.3030v2).
+* __BigDecimal__ provides arbitrary precision calculations by means of the `java.math` package from the standard library. To provide the missing pieces, I brought in classes from [Richard J. Mathar](http://www.mpia.de/~mathar/)'s own work, [A Java Math.BigDecimal Implementation of Core Mathematical Functions](http://arxiv.org/abs/0908.3030v3).
 
 ### Formulas
 
