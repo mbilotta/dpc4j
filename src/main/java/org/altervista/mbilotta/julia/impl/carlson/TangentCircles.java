@@ -39,7 +39,7 @@ import org.altervista.mbilotta.julia.math.CoordinateTransform;
 import org.altervista.mbilotta.julia.math.Real;
 
 
-@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@gmail.com")
+@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
 @Author(name = "Paul W. Carlson", contact = "mailto:carlpaulw@aol.com")
 public class TangentCircles extends AbstractSimpleRepresentation {
 

@@ -37,7 +37,7 @@ import org.altervista.mbilotta.julia.impl.RasterScan;
 import org.altervista.mbilotta.julia.math.CoordinateTransform;
 
 
-@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@gmail.com")
+@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
 public class EscapeTime extends AbstractRasterRepresentation {
 
 	private int maxIterations;

@@ -28,7 +28,7 @@ import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.Real;
 
 
-@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@gmail.com")
+@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
 public final class CarlsonFormula extends AbstractFormula<CarlsonFormula> {
 
 	private Real bailout;

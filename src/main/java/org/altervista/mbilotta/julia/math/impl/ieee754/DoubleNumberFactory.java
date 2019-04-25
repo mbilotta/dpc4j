@@ -27,7 +27,7 @@ import org.altervista.mbilotta.julia.NumberFactory;
 import org.altervista.mbilotta.julia.math.Real;
 
 
-@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@gmail.com")
+@Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
 public class DoubleNumberFactory implements NumberFactory {
 
 	public static final DoubleReal ZERO = new DoubleReal(0);
