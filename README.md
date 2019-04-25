@@ -9,7 +9,7 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 ### Number factories
 
 * __Double__ provides IEEE 754 64-bit floating point calculations. Functions like sine, cosine, exponential, etc. are computed simply using their counterpart methods in the `java.lang.Math` class.
-* __BigDecimal__ provides arbitrary precision calculations by means of the `java.math` package from the standard library. To provide the missing pieces, I brought in classes from Richard J. Mathar's own work, [A Java Math.BigDecimal Implementation of Core Mathematical Functions](http://arxiv.org/abs/0908.3030v2).
+* __BigDecimal__ provides arbitrary precision calculations by means of the `java.math` package from the standard library. To provide the missing pieces, I brought in classes from [Richard J. Mathar](http://www.mpia.de/~mathar/)'s own work, [A Java Math.BigDecimal Implementation of Core Mathematical Functions](http://arxiv.org/abs/0908.3030v2).
 
 ### Formulas
 
@@ -50,6 +50,30 @@ Then you can build DPC4J as any other Maven project:
     git clone https://github.com/mbilotta/dpc4j.git
     cd dpc4j
     mvn clean package
+
+At this point you may have noticed that the file you just built is named `dpc4j.jar` (or something similar) while Julia asks for a `dpc4j.jup` file instead. Well, `dpc4j.jup` is nothing more than a ZIP archive containing the following structure:
+
+```
+.
+├── bin
+│   ├── COPYING
+│   └── dpc4j.jar  <-- Build output
+├── doc
+│   └── COPYING
+└── xml            <-- Exactly the same xml folder you see next to src
+    └── org
+        └── altervista
+            └── mbilotta
+                ├── BigDecimal.xml
+                ├── Carlson.xml
+                ├── Double.xml
+                ├── EscapeTime.xml
+                ├── MuEncy.xml
+                ├── Multibrot.xml
+                ├── Quadratic.xml
+                ├── RingSegments.xml
+                └── TangentCircles.xml
+```
 
 ## Licensing information
 
