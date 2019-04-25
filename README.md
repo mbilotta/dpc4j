@@ -72,7 +72,8 @@ At this point you may have noticed that the file you just built is named `dpc4j.
                 ├── Multibrot.xml
                 ├── Quadratic.xml
                 ├── RingSegments.xml
-                └── TangentCircles.xml
+                ├── ...
+                ...
 ```
 
 ## Licensing information
