@@ -60,7 +60,7 @@ At this point you may have noticed that the file you just built is named `dpc4j.
 │   └── dpc4j.jar  <-- Build output
 ├── doc
 │   └── COPYING
-└── xml            <-- Exactly the same xml folder you see next to src
+└── xml            <-- Exactly the same xml/ folder you see next to src/
     └── org
         └── altervista
             └── mbilotta
