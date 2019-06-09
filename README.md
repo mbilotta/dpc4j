@@ -61,7 +61,7 @@ Then you can build DPC4J as any other Maven project:
     cd dpc4j
     mvn clean package
 
-At this point you may have noticed that the file you just built is named `dpc4j.jar` (or something similar) while Julia asks for a `dpc4j.jup` file instead. Well, `dpc4j.jup` is nothing more than a ZIP archive containing the following structure:
+At this point you may have noticed that the file you just built is named `dpc4j.jar` while Julia asks for a `dpc4j.jup` file instead. Well, `dpc4j.jup` is nothing more than a ZIP archive containing the following structure:
 
 ```
 .
