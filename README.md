@@ -1,3 +1,5 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # Default Plugin Collection for Julia (DPC4J)
 
 Minimal set of plugins to start exploring fractals with [Julia](https://github.com/mbilotta/julia).
@@ -21,7 +23,7 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 
 * __Escape Time__ is probably the first known coloring method. It is also known as _Escape Iterations_ or _Dwell_.
 * __MuEncy__ is based on the [algorithm](http://mrob.com/pub/muency/color.html) used by [Robert Munafo](http://mrob.com/) in the [Mu-Ency](http://mrob.com/pub/muency.html) illustrations. 
-* __Tangent Circles__ and __Ring Segments__ are two [orbit trap](https://www.mi.sanu.ac.rs/vismath/javier/b7.htm) rendering methods described by Paul W. Carlson in the same paper linked above.
+* __Tangent Circles__ and __Ring Segments__ are those two [orbit trap](https://www.mi.sanu.ac.rs/vismath/javier/b7.htm) rendering methods described by Paul W. Carlson in the same paper linked above.
 
 ## Installation
 
@@ -35,6 +37,14 @@ Keep this window open and follow these steps:
 2. Click _Install new plugins..._ in the error dialog.
 3. Locate file `dpc4j.jup`.
 4. Click _Install_.
+5. Restart Julia.
+
+## Update installation
+
+1. Open _File_ → _Install new plugins..._
+2. Locate file `dpc4j.jup`.
+3. Click _Install_.
+4. When you're first asked about a file name conflict, click _Yes to All_.
 5. Restart Julia.
 
 ## Building DPC4J
