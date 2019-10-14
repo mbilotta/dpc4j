@@ -61,30 +61,11 @@ Then you can build DPC4J as any other Maven project:
     cd dpc4j
     mvn clean package
 
-At this point you may have noticed that the file you just built is named `dpc4j.jar` while Julia asks for a `dpc4j.jup` file instead. Well, `dpc4j.jup` is nothing more than a ZIP archive containing the following structure:
-
+Finally, to generate the JUP archive, you should use the Julia command line:
 ```
-.
-├── bin
-│   ├── COPYING
-│   └── dpc4j.jar  <-- Build output
-├── doc
-│   └── COPYING
-└── xml            <-- Exactly the same xml/ folder you see next to src/
-    └── org
-        └── altervista
-            └── mbilotta
-                ├── BigDecimal.xml
-                ├── Carlson.xml
-                ├── Double.xml
-                ├── EscapeTime.xml
-                ├── MuEncy.xml
-                ├── Multibrot.xml
-                ├── Quadratic.xml
-                ├── RingSegments.xml
-                ├── ...
-                ...
+java -jar ~/julia.jar --jup --license COPYING --out dpc4j.jup org/altervista/mbilotta xml/ target/dpc4j.jar
 ```
+Supposing you have placed `julia.jar` in your home directory, running this command from the project root directory will generate `dpc4j.jup`.
 
 ## Licensing information
 
