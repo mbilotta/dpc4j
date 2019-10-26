@@ -27,6 +27,8 @@ import org.altervista.mbilotta.julia.NumberFactory;
 import org.altervista.mbilotta.julia.impl.AbstractFormula;
 import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.Real;
+import org.altervista.mbilotta.julia.program.parsers.IntParameter;
+import org.altervista.mbilotta.julia.program.parsers.RealParameter;
 
 
 @Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
@@ -77,6 +79,7 @@ public class MultibrotFormula extends AbstractFormula<MultibrotFormula> {
 		return n;
 	}
 
+	@IntParameter.Min(2)
 	public void setN(int n) {
 		this.n = n;
 	}
@@ -85,6 +88,7 @@ public class MultibrotFormula extends AbstractFormula<MultibrotFormula> {
 		return bailout;
 	}
 
+	@RealParameter.Min(value = "0", inclusive = false)
 	public void setBailout(Real bailout) {
 		this.bailout = bailout;
 	}

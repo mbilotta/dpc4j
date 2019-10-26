@@ -28,6 +28,7 @@ import org.altervista.mbilotta.julia.Author;
 import org.altervista.mbilotta.julia.Decimal;
 import org.altervista.mbilotta.julia.NumberFactory;
 import org.altervista.mbilotta.julia.math.Real;
+import org.altervista.mbilotta.julia.program.parsers.IntParameter;
 import org.altervista.mbilotta.rjm.BigDecimalMath;
 
 
@@ -45,6 +46,7 @@ public class RJMNumberFactory implements NumberFactory {
 		mc = new MathContext(16);
 	}
 
+	@IntParameter.Min(1)
 	public final void setPrecision(int precision) {
 		mc = new MathContext(precision);
 	}

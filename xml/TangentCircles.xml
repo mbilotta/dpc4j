@@ -26,12 +26,10 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	xsi:type="representation">
 	<class>org.altervista.mbilotta.julia.impl.carlson.TangentCircles</class>
 	<parameter id="maxIterations" xsi:type="int">
-		<min>1</min>
 		<hint>500</hint>
 		<hint groups="fig3 fig5">3000</hint>
 	</parameter>
 	<parameter id="rc" xsi:type="real">
-		<minExclusive>0</minExclusive>
 		<hint groups="fig3">0.2</hint>
 		<hint groups="fig5">2</hint>
 	</parameter>
@@ -42,12 +40,9 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 		<hint groups="fig3 fig5">255 255 255</hint>
 	</parameter>
 	<parameter id="paletteSize" xsi:type="int">
-		<min>1</min>
-		<max>268435455</max>
 		<hint groups="fig3 fig5">30</hint>
 	</parameter>
 	<parameter id="paletteOffset" xsi:type="int">
-		<min>0</min>
 		<hint groups="fig3 fig5">0</hint>
 	</parameter>
 	<parameter id="trappedPoint0" xsi:type="gradient">

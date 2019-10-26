@@ -26,6 +26,7 @@ import org.altervista.mbilotta.julia.Decimal;
 import org.altervista.mbilotta.julia.impl.AbstractFormula;
 import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.Real;
+import org.altervista.mbilotta.julia.program.parsers.RealParameter;
 
 
 @Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
@@ -75,6 +76,7 @@ public final class CarlsonFormula extends AbstractFormula<CarlsonFormula> {
 		return bailout;
 	}
 
+	@RealParameter.Min(value = "0", inclusive = false)
 	public void setBailout(Real bailout) {
 		this.bailout = bailout;
 	}

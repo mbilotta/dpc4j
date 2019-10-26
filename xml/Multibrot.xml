@@ -39,13 +39,11 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 		<imC>0</imC>
 	</juliaSetDefaults>
 	<parameter id="n" xsi:type="int">
-		<min>2</min>
 		<hint groups="quartic">4</hint>
 		<hint groups="cubic default">3</hint>
 		<hint groups="quadratic">2</hint>
 	</parameter>
 	<parameter id="bailout" xsi:type="real">
-		<minExclusive>0</minExclusive>
 		<hint groups="quartic cubic quadratic">20</hint>
 	</parameter>
 	<documentation xml:lang="en">

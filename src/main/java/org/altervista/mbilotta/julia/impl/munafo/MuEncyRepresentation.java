@@ -35,6 +35,9 @@ import org.altervista.mbilotta.julia.impl.PixelCalculator;
 import org.altervista.mbilotta.julia.impl.PointCalculator;
 import org.altervista.mbilotta.julia.math.CoordinateTransform;
 import org.altervista.mbilotta.julia.math.Real;
+import org.altervista.mbilotta.julia.program.parsers.DoubleParameter;
+import org.altervista.mbilotta.julia.program.parsers.IntParameter;
+import org.altervista.mbilotta.julia.program.parsers.RealParameter;
 
 
 @Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
@@ -125,10 +128,12 @@ public class MuEncyRepresentation extends AbstractRasterRepresentation {
 		return super.getNumOfSteps();
 	}
 
+	@IntParameter.Min(1)
 	public void setMaxIterations(int maxIterations) {
 		this.maxIterations = maxIterations;
 	}
 
+	@RealParameter.Min(value = "0", inclusive = false)
 	public void setBailout(Real bailout) {
 		this.bailout = bailout;
 	}
@@ -146,21 +151,26 @@ public class MuEncyRepresentation extends AbstractRasterRepresentation {
 	}
 
 	@Previewable
+	@IntParameter.Min(1)
 	public void setDwellScaleLimit(int dwellScaleLimit) {
 		this.dwellScaleLimit = dwellScaleLimit;
 	}
 
 	@Previewable
+	@DoubleParameter.Min(0)
+	@DoubleParameter.Max(value = 1, inclusive = false)
 	public void setFinalangWeight(double finalangWeight) {
 		this.finalangWeight = finalangWeight;
 	}
 
 	@Previewable
+	@DoubleParameter.Min(0)
 	public void setFinalradWeight(double finalradWeight) {
 		this.finalradWeight = finalradWeight;
 	}
 
 	@Previewable
+	@DoubleParameter.Min(0)
 	public void setAngleWeight(double angleWeight) {
 		this.angleWeight = angleWeight;
 	}
@@ -170,6 +180,8 @@ public class MuEncyRepresentation extends AbstractRasterRepresentation {
 	}
 
 	@Override
+	@IntParameter.Min(1)
+	@IntParameter.Max(9)
 	public void setNumOfSteps(int numOfSteps) {
 		super.setNumOfSteps(numOfSteps);
 	}

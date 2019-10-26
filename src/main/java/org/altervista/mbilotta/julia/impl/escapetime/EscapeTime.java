@@ -35,6 +35,7 @@ import org.altervista.mbilotta.julia.impl.ProgressiveRefinement;
 import org.altervista.mbilotta.julia.impl.ProgressivelyRefinedImage;
 import org.altervista.mbilotta.julia.impl.RasterScan;
 import org.altervista.mbilotta.julia.math.CoordinateTransform;
+import org.altervista.mbilotta.julia.program.parsers.IntParameter;
 
 
 @Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
@@ -149,6 +150,7 @@ public class EscapeTime extends AbstractRasterRepresentation {
 		return super.getNumOfSteps();
 	}
 
+	@IntParameter.Min(1)
 	public void setMaxIterations(int maxIterations) {
 		this.maxIterations = maxIterations;
 	}
@@ -159,11 +161,13 @@ public class EscapeTime extends AbstractRasterRepresentation {
 	}
 
 	@Previewable
+	@IntParameter.Min(1)
 	public void setPaletteSize(int paletteSize) {
 		this.paletteSize = paletteSize;
 	}
 
 	@Previewable
+	@IntParameter.Min(0)
 	public void setPaletteOffset(int paletteOffset) {
 		this.paletteOffset = paletteOffset;
 	}
@@ -178,6 +182,8 @@ public class EscapeTime extends AbstractRasterRepresentation {
 	}
 
 	@Override
+	@IntParameter.Min(1)
+	@IntParameter.Max(9)
 	public void setNumOfSteps(int numOfSteps) {
 		super.setNumOfSteps(numOfSteps);
 	}

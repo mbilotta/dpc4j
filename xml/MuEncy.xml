@@ -26,10 +26,8 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	xsi:type="representation">
 	<class>org.altervista.mbilotta.julia.impl.munafo.MuEncyRepresentation</class>
 	<parameter id="maxIterations" xsi:type="int">
-		<min>1</min>
 	</parameter>
 	<parameter id="bailout" xsi:type="real">
-		<minExclusive>0</minExclusive>
 	</parameter>
 	<parameter id="distanceEstimateComputed" xsi:type="boolean">
 	</parameter>
@@ -38,21 +36,14 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	<parameter id="binaryDecompositionComputed" xsi:type="boolean">
 	</parameter>
 	<parameter id="dwellScaleLimit" xsi:type="int">
-		<min>1</min>
 	</parameter>
 	<parameter id="angleWeight" xsi:type="double">
-		<minInclusive>0</minInclusive>
 	</parameter>
 	<parameter id="finalradWeight" xsi:type="double">
-		<minInclusive>0</minInclusive>
 	</parameter>
 	<parameter id="finalangWeight" xsi:type="double">
-		<minInclusive>0</minInclusive>
-		<maxExclusive>1</maxExclusive>
 	</parameter>
 	<parameter id="numOfSteps" xsi:type="int">
-		<min>1</min>
-		<max>9</max>
 	</parameter>
 	<parameter id="optimizationDomain" xsi:type="enum">
 	</parameter>

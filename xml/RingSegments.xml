@@ -26,15 +26,12 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	xsi:type="representation">
 	<class>org.altervista.mbilotta.julia.impl.carlson.RingSegments</class>
 	<parameter id="maxIterations" xsi:type="int">
-		<min>1</min>
 		<hint groups="fig4 fig6">3000</hint>
 	</parameter>
 	<parameter id="rm" xsi:type="real">
-		<minExclusive>0</minExclusive>
 		<hint groups="fig4">1</hint>
 	</parameter>
 	<parameter id="t" xsi:type="real">
-		<minExclusive>0</minExclusive>
 		<hint groups="fig4">0.2</hint>
 	</parameter>
 	<parameter id="untrappedOutsidePoint" xsi:type="color">
@@ -42,11 +39,8 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	<parameter id="untrappedInsidePoint" xsi:type="color">
 	</parameter>
 	<parameter id="paletteSize" xsi:type="int">
-		<min>1</min>
-		<max>268435455</max>
 	</parameter>
 	<parameter id="paletteOffset" xsi:type="int">
-		<min>0</min>
 		<hint groups="fig4">0</hint>
 	</parameter>
 	<parameter id="trappedPoint0" xsi:type="gradient">

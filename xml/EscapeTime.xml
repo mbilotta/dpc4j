@@ -25,7 +25,6 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	xsi:type="representation">
 	<class>org.altervista.mbilotta.julia.impl.escapetime.EscapeTime</class>
 	<parameter id="maxIterations" xsi:type="int">
-		<min>1</min>
 		<hint>500</hint>
 	</parameter>
  	<parameter id="gradient" xsi:type="gradient">
@@ -106,19 +105,15 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 		</hint>
 	</parameter>
 	<parameter id="paletteSize" xsi:type="int">
-		<min>1</min>
 		<hint>500</hint>
 	</parameter>
 	<parameter id="paletteOffset" xsi:type="int">
-		<min>0</min>
 		<hint>0</hint>
 	</parameter>
 	<parameter id="insideColor" xsi:type="color">
 		<hint>0 0 0</hint>
 	</parameter>
 	<parameter id="numOfSteps" xsi:type="int">
-		<min>1</min>
-		<max>9</max>
 		<hint>5</hint>
 	</parameter>
 	<parameter id="optimizationDomain" xsi:type="enum">

@@ -37,6 +37,8 @@ import org.altervista.mbilotta.julia.impl.PointCalculator;
 import org.altervista.mbilotta.julia.impl.RasterImage;
 import org.altervista.mbilotta.julia.math.CoordinateTransform;
 import org.altervista.mbilotta.julia.math.Real;
+import org.altervista.mbilotta.julia.program.parsers.IntParameter;
+import org.altervista.mbilotta.julia.program.parsers.RealParameter;
 
 
 @Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
@@ -170,10 +172,12 @@ public class TangentCircles extends AbstractSimpleRepresentation {
 		return trappedPoint7;
 	}
 
+	@IntParameter.Min(1)
 	public void setMaxIterations(int maxIterations) {
 		this.maxIterations = maxIterations;
 	}
 
+	@RealParameter.Min(value = "0", inclusive = false)
 	public void setRc(Real rc) {
 		this.rc = rc;
 	}
@@ -188,11 +192,14 @@ public class TangentCircles extends AbstractSimpleRepresentation {
 		this.untrappedInsidePoint = untrappedInsidePoint;
 	}
 
+	@IntParameter.Min(1)
+	@IntParameter.Max(268435455)
 	public void setPaletteSize(int paletteSize) {
 		this.paletteSize = paletteSize;
 	}
 
 	@Previewable
+	@IntParameter.Min(0)
 	public void setPaletteOffset(int paletteOffset) {
 		this.paletteOffset = paletteOffset;
 	}

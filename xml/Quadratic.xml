@@ -39,7 +39,6 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 		<imC>0</imC>
 	</juliaSetDefaults>
 	<parameter id="bailout" xsi:type="real">
-		<minExclusive>0</minExclusive>
 		<hint>20</hint>
 	</parameter>
 	<documentation xml:lang="en">

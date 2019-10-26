@@ -25,7 +25,6 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	xsi:type="numberFactory">
 	<class>org.altervista.mbilotta.julia.math.impl.rjm.RJMNumberFactory</class>
 	<parameter id="precision" xsi:type="int">
-		<min>1</min>
 		<hint>16</hint>
 	</parameter>
 	<documentation xml:lang="it">

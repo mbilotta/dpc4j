@@ -27,6 +27,7 @@ import org.altervista.mbilotta.julia.Formula;
 import org.altervista.mbilotta.julia.NumberFactory;
 import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.Real;
+import org.altervista.mbilotta.julia.program.parsers.RealParameter;
 
 
 @Author(name = "Maurizio Bilotta", contact = "mailto:maurizeio@yahoo.it")
@@ -106,6 +107,7 @@ public class QuadraticFormula implements Formula {
 		return bailout;
 	}
 
+	@RealParameter.Min(value = "0", inclusive = false)
 	public void setBailout(Real bailout) {
 		this.bailout = bailout;
 	}
