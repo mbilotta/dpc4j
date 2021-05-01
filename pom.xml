@@ -21,7 +21,7 @@
     <dependency>
       <groupId>org.altervista.mbilotta</groupId>
       <artifactId>julia</artifactId>
-      <version>1.1</version>
+      <version>[1.1,)</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
