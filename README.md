@@ -39,6 +39,12 @@ Keep this window open and follow these steps:
 4. Click _Install_.
 5. Restart Julia.
 
+### Installation using the CLI
+
+Run the following:
+
+    java -jar julia.jar install dpc4j.jup
+
 ## Update installation
 
 1. Open _File_ → _Install new plugins..._
@@ -46,6 +52,12 @@ Keep this window open and follow these steps:
 3. Click _Install_.
 4. When you're first asked about a file name conflict, click _Yes to All_.
 5. Restart Julia.
+
+### Update installation using the CLI
+
+Run the following:
+
+    java -jar julia.jar install --overwrite-existing dpc4j.jup
 
 ## Building DPC4J
 
@@ -61,9 +73,9 @@ Then you can build DPC4J as any other Maven project:
     cd dpc4j
     mvn clean package
 
-Finally, to generate the JUP archive, you should use the Julia command line:
+Finally, to generate the JUP archive, you should use the Julia CLI:
 ```
-java -jar ~/julia.jar --jup --license COPYING --out dpc4j.jup org/altervista/mbilotta xml/ target/dpc4j.jar
+java -jar ~/julia.jar package --license COPYING --output dpc4j.jup org/altervista/mbilotta xml/ target/dpc4j.jar
 ```
 Supposing you have placed `julia.jar` in your home directory, running this command from the project root directory will generate `dpc4j.jup`.
 
