@@ -29,7 +29,7 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 
 The first time Julia runs, an error message will show:
 
-![Error shown the first time Julia runs](http://mbilotta.altervista.org/wp-content/uploads/2015/02/error-first-run.png)
+![Error shown the first time Julia runs](https://user-images.githubusercontent.com/14998549/122667426-2b418f00-d1b3-11eb-9888-920a2bf01d53.png)
 
 Keep this window open and follow these steps:
 
