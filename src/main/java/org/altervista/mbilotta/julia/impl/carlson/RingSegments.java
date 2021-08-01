@@ -26,7 +26,6 @@ import java.awt.Color;
 import org.altervista.mbilotta.julia.Author;
 import org.altervista.mbilotta.julia.Decimal;
 import org.altervista.mbilotta.julia.Gradient;
-import org.altervista.mbilotta.julia.Groups;
 import org.altervista.mbilotta.julia.IntermediateImage;
 import org.altervista.mbilotta.julia.NumberFactory;
 import org.altervista.mbilotta.julia.Previewable;
@@ -128,12 +127,10 @@ public class RingSegments extends AbstractSimpleRepresentation {
 		return maxIterations;
 	}
 
-	@Groups("fig6")
 	public Real getRm() {
 		return rm;
 	}
 
-	@Groups("fig6")
 	public Real getT() {
 		return t;
 	}
@@ -150,47 +147,38 @@ public class RingSegments extends AbstractSimpleRepresentation {
 		return paletteSize;
 	}
 
-	@Groups("fig6")
 	public int getPaletteOffset() {
 		return paletteOffset;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint0() {
 		return trappedPoint0;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint1() {
 		return trappedPoint1;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint2() {
 		return trappedPoint2;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint3() {
 		return trappedPoint3;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint4() {
 		return trappedPoint4;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint5() {
 		return trappedPoint5;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint6() {
 		return trappedPoint6;
 	}
 
-	@Groups("fig6")
 	public Gradient getTrappedPoint7() {
 		return trappedPoint7;
 	}

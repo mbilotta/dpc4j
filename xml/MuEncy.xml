@@ -26,26 +26,37 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	xsi:type="representation">
 	<class>org.altervista.mbilotta.julia.impl.munafo.MuEncyRepresentation</class>
 	<parameter id="maxIterations" xsi:type="int">
+		<hint>500</hint>
 	</parameter>
 	<parameter id="bailout" xsi:type="real">
+		<hint>20</hint>
 	</parameter>
 	<parameter id="distanceEstimateComputed" xsi:type="boolean">
+		<hint>true</hint>
 	</parameter>
 	<parameter id="continuousDwellComputed" xsi:type="boolean">
+		<hint>true</hint>
 	</parameter>
 	<parameter id="binaryDecompositionComputed" xsi:type="boolean">
+		<hint>true</hint>
 	</parameter>
 	<parameter id="dwellScaleLimit" xsi:type="int">
+		<hint>100000</hint>
 	</parameter>
 	<parameter id="angleWeight" xsi:type="double">
+		<hint>2.9</hint>
 	</parameter>
 	<parameter id="finalradWeight" xsi:type="double">
+		<hint>0.05</hint>
 	</parameter>
 	<parameter id="finalangWeight" xsi:type="double">
+		<hint>0.15</hint>
 	</parameter>
 	<parameter id="numOfSteps" xsi:type="int">
+		<hint>5</hint>
 	</parameter>
 	<parameter id="optimizationDomain" xsi:type="enum">
+		<hint>BORDERS_EXCLUDED</hint>
 	</parameter>
 	<documentation xml:lang="en">
 		<name>Mu-Ency Representation</name>

@@ -30,23 +30,32 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 	</parameter>
 	<parameter id="rm" xsi:type="real">
 		<hint groups="fig4">1</hint>
+		<hint groups="fig6">0.5</hint>
 	</parameter>
 	<parameter id="t" xsi:type="real">
 		<hint groups="fig4">0.2</hint>
+		<hint groups="fig6">0.3</hint>
 	</parameter>
 	<parameter id="untrappedOutsidePoint" xsi:type="color">
+		<hint>0 0 0</hint>
 	</parameter>
 	<parameter id="untrappedInsidePoint" xsi:type="color">
+		<hint>255 255 255</hint>
 	</parameter>
 	<parameter id="paletteSize" xsi:type="int">
+		<hint>100</hint>
 	</parameter>
 	<parameter id="paletteOffset" xsi:type="int">
-		<hint groups="fig4">0</hint>
+		<hint groups="fig4 fig6">0</hint>
 	</parameter>
 	<parameter id="trappedPoint0" xsi:type="gradient">
 		<hint groups="fig4">
 			<color location="0">255 0 174</color>
 			<color location="1">96 0 32</color>
+		</hint>
+		<hint groups="fig6"> <!-- gold -->
+			<color location="0">255 255 0</color>
+			<color location="1">154 64 0</color>
 		</hint>
 	</parameter>
 	<parameter id="trappedPoint1" xsi:type="gradient">
@@ -54,11 +63,19 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 			<color location="0">255 32 32</color>
 			<color location="1">96 0 0</color>
 		</hint>
+		<hint groups="fig6"> <!-- silver -->
+			<color location="0">255 255 255</color>
+			<color location="1">128 128 128</color>
+		</hint>
 	</parameter>
 	<parameter id="trappedPoint2" xsi:type="gradient">
 		<hint groups="fig4">
 			<color location="0">255 130 0</color>
 			<color location="1">162 16 0</color>
+		</hint>
+		<hint groups="fig6">
+			<color location="0">255 255 0</color>
+			<color location="1">154 64 0</color>
 		</hint>
 	</parameter>
 	<parameter id="trappedPoint3" xsi:type="gradient">
@@ -66,11 +83,19 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 			<color location="0">255 255 0</color>
 			<color location="1">154 64 0</color>
 		</hint>
+		<hint groups="fig6">
+			<color location="0">255 255 255</color>
+			<color location="1">128 128 128</color>
+		</hint>
 	</parameter>
 	<parameter id="trappedPoint4" xsi:type="gradient">
 		<hint groups="fig4">
 			<color location="0">0 255 108</color>
 			<color location="1">0 48 16</color>
+		</hint>
+		<hint groups="fig6">
+			<color location="0">255 255 0</color>
+			<color location="1">154 64 0</color>
 		</hint>
 	</parameter>
 	<parameter id="trappedPoint5" xsi:type="gradient">
@@ -78,17 +103,29 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 			<color location="0">0 255 255</color>
 			<color location="1">0 48 48</color>
 		</hint>
+		<hint groups="fig6">
+			<color location="0">255 255 255</color>
+			<color location="1">128 128 128</color>
+		</hint>
 	</parameter>
 	<parameter id="trappedPoint6" xsi:type="gradient">
 		<hint groups="fig4">
 			<color location="0">64 64 255</color>
 			<color location="1">0 0 96</color>
 		</hint>
+		<hint groups="fig6">
+			<color location="0">255 255 0</color>
+			<color location="1">154 64 0</color>
+		</hint>
 	</parameter>
 	<parameter id="trappedPoint7" xsi:type="gradient">
 		<hint groups="fig4">
 			<color location="0">174 96 255</color>
 			<color location="1">72 0 80</color>
+		</hint>
+		<hint groups="fig6">
+			<color location="0">255 255 255</color>
+			<color location="1">128 128 128</color>
 		</hint>
 	</parameter>
 	<documentation xml:lang="it">

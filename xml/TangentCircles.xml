@@ -40,6 +40,7 @@ along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
 		<hint groups="fig3 fig5">255 255 255</hint>
 	</parameter>
 	<parameter id="paletteSize" xsi:type="int">
+		<hint>100</hint>
 		<hint groups="fig3 fig5">30</hint>
 	</parameter>
 	<parameter id="paletteOffset" xsi:type="int">
