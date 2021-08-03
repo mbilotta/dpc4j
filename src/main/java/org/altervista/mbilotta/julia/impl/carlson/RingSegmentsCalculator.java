@@ -26,7 +26,6 @@ import org.altervista.mbilotta.julia.IntermediateImage;
 import org.altervista.mbilotta.julia.NumberFactory;
 import org.altervista.mbilotta.julia.impl.IntegerImage;
 import org.altervista.mbilotta.julia.impl.PointCalculator;
-import org.altervista.mbilotta.julia.impl.carlson.CarlsonPixelCalculator;
 import org.altervista.mbilotta.julia.math.Complex;
 import org.altervista.mbilotta.julia.math.CoordinateTransform;
 import org.altervista.mbilotta.julia.math.Real;

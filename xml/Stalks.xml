@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Copyright (C) 2019 Maurizio Bilotta.
+
+This file is part of the Default Plugin Collection for Julia ("DPC4J").
+See <http://mbilotta.altervista.org/>.
+
+DPC4J is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+DPC4J is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with DPC4J. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<plugin xmlns="http://mbilotta.altervista.org/julia/descriptor"
+		xmlns:xml="http://www.w3.org/XML/1998/namespace"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:type="representation">
+	<class>org.altervista.mbilotta.julia.impl.stalks.Stalks</class>
+	<parameter id="minIterations" xsi:type="int">
+		<hint>1</hint>
+	</parameter>
+	<parameter id="maxIterations" xsi:type="int">
+		<hint>100</hint>
+	</parameter>
+	<parameter id="trapColor" xsi:type="color">
+		<hint>0 64 255</hint>
+	</parameter>
+	<parameter id="background" xsi:type="color">
+		<hint>255 255 255</hint>
+	</parameter>
+	<parameter id="orbitPositionX" xsi:type="real">
+		<hint>0</hint>
+	</parameter>
+	<parameter id="orbitPositionY" xsi:type="real">
+		<hint>0</hint>
+	</parameter>
+	<parameter id="orbitPositionZ" xsi:type="real">
+		<hint>0</hint>
+	</parameter>
+	<parameter id="orbitPositionW" xsi:type="real">
+		<hint>0</hint>
+	</parameter>
+	<parameter id="orbitDividend" xsi:type="real">
+		<hint>0.05</hint>
+	</parameter>
+	<parameter id="orbitInsideOnly" xsi:type="boolean">
+		<hint>false</hint>
+	</parameter>
+	<parameter id="showOrbitX" xsi:type="boolean">
+		<hint>true</hint>
+	</parameter>
+	<parameter id="showOrbitY" xsi:type="boolean">
+		<hint>true</hint>
+	</parameter>
+</plugin>

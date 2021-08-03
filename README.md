@@ -24,6 +24,7 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 * __Escape Time__ is probably the first known coloring method. It is also known as _Escape Iterations_ or _Dwell_.
 * __MuEncy__ is based on the [algorithm](http://mrob.com/pub/muency/color.html) used by [Robert Munafo](http://mrob.com/) in the [Mu-Ency](http://mrob.com/pub/muency.html) illustrations. 
 * __Tangent Circles__ and __Ring Segments__ are those two [orbit trap](https://www.mi.sanu.ac.rs/vismath/javier/b7.htm) rendering methods described by Paul W. Carlson in the same paper linked above.
+* __Stalks__, also known as _Epsilon cross_, is probably the first orbit trap algorithm ever invented. It was popularized by researcher [Clifford A. Pickover](https://en.wikipedia.org/wiki/Clifford_A._Pickover) at the end of the 80s.
 
 ## Installation
 
