@@ -22,7 +22,7 @@ Currently DPC4J provides 2 number factories, 3 formulas and 4 representations.
 ### Representations
 
 * __Escape Time__ is probably the first known coloring method. It is also known as _Escape Iterations_ or _Dwell_.
-* __MuEncy__ is based on the [algorithm](http://mrob.com/pub/muency/color.html) used by [Robert Munafo](http://mrob.com/) in the [Mu-Ency](http://mrob.com/pub/muency.html) illustrations. 
+* __MuEncy__ is based on the [algorithm](http://mrob.com/pub/muency/color.html) used by [Robert Munafo](http://mrob.com/) to create beautiful illustrations like those you can find throughout its [Mu-Ency](http://mrob.com/pub/muency.html). 
 * __Tangent Circles__ and __Ring Segments__ are those two [orbit trap](https://www.mi.sanu.ac.rs/vismath/javier/b7.htm) rendering methods described by Paul W. Carlson in the same paper linked above.
 * __Stalks__, also known as _Epsilon cross_, is probably the first orbit trap algorithm ever invented. It was popularized by researcher [Clifford A. Pickover](https://en.wikipedia.org/wiki/Clifford_A._Pickover) at the end of the 80s.
 
@@ -79,6 +79,10 @@ Finally, to generate the JUP archive, you should use the Julia CLI:
 java -jar ~/julia.jar package --license COPYING --output dpc4j.jup org/altervista/mbilotta xml/ target/dpc4j.jar
 ```
 Supposing you have placed `julia.jar` in your home directory, running this command from the project root directory will generate `dpc4j.jup`.
+
+## Credits
+
+Thanks to [JPBotelho](https://github.com/JPBotelho) for providing a sample implementation of the Stalks algorithm in his [Fractal-Megacollection](https://github.com/JPBotelho/Fractal-Megacollection).
 
 ## Licensing information
 
